@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The AI Capex Supercycle — Basis Point</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400;1,600&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1a1510;
+      --ink-light: #4a4035;
+      --cream: #faf7f2;
+      --cream-dark: #f0ebe0;
+      --amber: #c8832a;
+      --amber-light: #e8a84a;
+      --rule: #d4c9b8;
+      --serif: 'Playfair Display', Georgia, serif;
+      --body: 'Source Serif 4', Georgia, serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--body);
+      font-size: 18px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── MASTHEAD ── */
+    .masthead {
+      background: var(--ink);
+      color: var(--amber-light);
+      text-align: center;
+      padding: 0.35rem 1rem;
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    /* ── HEADER ── */
+    header {
+      border-bottom: 3px solid var(--ink);
+      background: var(--cream);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 0 0.8rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .logo {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .logo span { color: var(--amber); }
+
+    nav {
+      display: flex;
+      gap: 0;
+      padding: 0.5rem 0;
+    }
+
+    nav a {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      padding: 0.3rem 1rem 0.3rem 0;
+      margin-right: 0.5rem;
+      border-right: 1px solid var(--rule);
+      transition: color 0.2s;
+    }
+
+    nav a:last-child { border-right: none; }
+    nav a:hover { color: var(--amber); }
+
+    /* ── ARTICLE LAYOUT ── */
+    .article-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+      display: grid;
+      grid-template-columns: 680px 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    /* ── ARTICLE BODY ── */
+    .article-body {}
+
+    .article-kicker {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .article-kicker::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 2px;
+      background: var(--amber);
+    }
+
+    .article-headline {
+      font-family: var(--serif);
+      font-size: 2.8rem;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+
+    .article-standfirst {
+      font-family: var(--body);
+      font-size: 1.15rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--ink-light);
+      line-height: 1.55;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: var(--ink-light);
+    }
+
+    .article-meta .author { font-weight: 600; color: var(--ink); }
+
+    .article-meta .dot { color: var(--rule); }
+
+    /* Hero visual */
+    .article-hero-visual {
+      width: 100%;
+      border-radius: 3px;
+      margin-bottom: 2rem;
+      background: linear-gradient(135deg, #0f1e2e 0%, #1a3a5c 50%, #0f2a1e 100%);
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .article-hero-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .visual-label {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--amber-light);
+      margin-bottom: 1.2rem;
+    }
+
+    /* Chart: Big Tech Capex */
+    .bar-chart {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .bar-row {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .bar-label {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: rgba(250,247,242,0.8);
+      width: 80px;
+      flex-shrink: 0;
+    }
+
+    .bar-track {
+      flex: 1;
+      height: 22px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 2px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 2px;
+      animation: barGrow 1s ease both;
+      transform-origin: left;
+    }
+
+    @keyframes barGrow {
+      from { transform: scaleX(0); }
+      to   { transform: scaleX(1); }
+    }
+
+    .bar-value {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: rgba(250,247,242,0.9);
+      width: 55px;
+      flex-shrink: 0;
+      text-align: right;
+    }
+
+    .chart-caption {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      color: rgba(250,247,242,0.4);
+      margin-top: 1rem;
+      font-style: italic;
+    }
+
+    /* Article prose */
+    .prose p {
+      margin-bottom: 1.4rem;
+      color: var(--ink);
+    }
+
+    .prose h2 {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--ink);
+      margin: 2.5rem 0 1rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .prose h3 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin: 1.8rem 0 0.7rem;
+    }
+
+    /* Pull quote */
+    .pull-quote {
+      margin: 2.5rem 0;
+      padding: 1.5rem 0 1.5rem 1.8rem;
+      border-left: 3px solid var(--amber);
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.4;
+      color: var(--ink);
+    }
+
+    /* Inline data table */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      font-family: var(--sans);
+      font-size: 0.82rem;
+    }
+
+    .data-table thead th {
+      font-weight: 600;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      padding: 0.6rem 0.8rem;
+      border-bottom: 2px solid var(--ink);
+      text-align: left;
+    }
+
+    .data-table tbody tr {
+      border-bottom: 1px solid var(--rule);
+      transition: background 0.15s;
+    }
+
+    .data-table tbody tr:hover { background: var(--cream-dark); }
+
+    .data-table tbody td {
+      padding: 0.7rem 0.8rem;
+      color: var(--ink);
+    }
+
+    .data-table .num { font-weight: 600; }
+    .data-table .up { color: #2a7a40; font-weight: 600; }
+    .data-table .down { color: #8a2a2a; font-weight: 600; }
+    .data-table .note { color: var(--ink-light); font-size: 0.75rem; }
+
+    /* Methodology box */
+    .method-box {
+      background: var(--cream-dark);
+      border: 1px solid var(--rule);
+      border-left: 3px solid var(--amber);
+      padding: 1.5rem;
+      margin: 2.5rem 0;
+      border-radius: 2px;
+    }
+
+    .method-box-title {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 0.6rem;
+    }
+
+    .method-box p {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--ink-light);
+      line-height: 1.6;
+      margin-bottom: 0 !important;
+    }
+
+    /* Key findings box */
+    .findings-box {
+      background: var(--ink);
+      color: var(--cream);
+      padding: 2rem;
+      border-radius: 3px;
+      margin: 2.5rem 0;
+    }
+
+    .findings-title {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--amber-light);
+      margin-bottom: 1.2rem;
+    }
+
+    .findings-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .findings-list li {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: rgba(250,247,242,0.85);
+      line-height: 1.5;
+      display: flex;
+      gap: 0.7rem;
+      align-items: flex-start;
+    }
+
+    .findings-list li::before {
+      content: '→';
+      color: var(--amber-light);
+      font-weight: 600;
+      flex-shrink: 0;
+      margin-top: 0.05rem;
+    }
+
+    /* Inline chart: line */
+    .line-chart-wrap {
+      margin: 2rem 0;
+      background: var(--cream-dark);
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+      padding: 1.5rem;
+    }
+
+    .chart-title {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+    }
+
+    .chart-subtitle {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      font-weight: 300;
+      color: var(--ink-light);
+      margin-bottom: 1rem;
+    }
+
+    .line-svg { width: 100%; height: 130px; }
+
+    /* ── SIDEBAR ── */
+    .article-sidebar {
+      position: sticky;
+      top: 100px;
+    }
+
+    .sidebar-section {
+      margin-bottom: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .sidebar-section:last-child {
+      border-bottom: none;
+    }
+
+    .sidebar-label {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 1rem;
+    }
+
+    .sidebar-stat {
+      margin-bottom: 1.2rem;
+    }
+
+    .sidebar-stat-number {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: 0.2rem;
+    }
+
+    .sidebar-stat-label {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 300;
+      color: var(--ink-light);
+      line-height: 1.4;
+    }
+
+    .related-article {
+      margin-bottom: 1.2rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .related-article:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .related-kicker {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 0.3rem;
+    }
+
+    .related-headline {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--ink);
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .related-headline:hover { color: var(--amber); }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      border: 1px solid var(--rule);
+      padding: 0.3rem 0.7rem;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .tag:hover { border-color: var(--amber); color: var(--amber); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      color: var(--cream);
+      padding: 2.5rem 2rem 1.5rem;
+      margin-top: 4rem;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 1rem;
+    }
+
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--cream);
+      text-decoration: none;
+    }
+
+    .footer-logo span { color: var(--amber); }
+
+    .footer-copy {
+      max-width: 1100px;
+      margin: 0 auto;
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 300;
+      color: rgba(250,247,242,0.35);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .article-wrapper { grid-template-columns: 1fr; gap: 2.5rem; }
+      .article-sidebar { position: static; }
+    }
+
+    @media (max-width: 600px) {
+      .article-headline { font-size: 2rem; }
+    }
+
+    /* ── ANIMATION ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .article-body { animation: fadeUp 0.6s ease both; }
+  </style>
+</head>
+<body>
+
+  <div class="masthead">Global macroeconomic analysis &amp; commentary &nbsp;·&nbsp; Basis Point</div>
+
+  <header>
+    <div class="header-inner">
+      <div class="header-top">
+        <a href="index.html" class="logo">Basis Point<span>.</span></a>
+        <div style="font-family:var(--sans);font-size:0.72rem;color:var(--ink-light);">Monday, 9 March 2026</div>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="#">Macro</a>
+        <a href="#">Trade</a>
+        <a href="#" style="color:var(--amber)">Tech &amp; Innovation</a>
+        <a href="#">Emerging Markets</a>
+        <a href="#">Data</a>
+        <a href="#">Opinion</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="article-wrapper">
+
+    <!-- ── MAIN ARTICLE ── -->
+    <article class="article-body">
+
+      <div class="article-kicker">Tech &amp; Innovation · Equity Analysis</div>
+
+      <h1 class="article-headline">The AI Capex Supercycle: What the Numbers Actually Tell Us</h1>
+
+      <p class="article-standfirst">The four largest US technology companies will collectively spend over $300 billion on capital expenditure in 2025 alone. That figure demands scrutiny — not just of what it means for their share prices, but for the wider economy it is reshaping.</p>
+
+      <div class="article-meta">
+        <span class="author">By The Editors</span>
+        <span class="dot">·</span>
+        <span>9 March 2026</span>
+        <span class="dot">·</span>
+        <span>12 min read</span>
+        <span class="dot">·</span>
+        <span style="color:var(--amber)">Tech &amp; Innovation</span>
+      </div>
+
+      <!-- Hero visual: Capex bar chart -->
+      <div class="article-hero-visual">
+        <div class="visual-label">Capital Expenditure — Selected Tech Giants, FY2024 (USD billions)</div>
+        <div class="bar-chart">
+          <div class="bar-row">
+            <span class="bar-label">Microsoft</span>
+            <div class="bar-track">
+              <div class="bar-fill" style="width:80%;background:linear-gradient(90deg,#c8832a,#e8a84a);animation-delay:0.1s"></div>
+            </div>
+            <span class="bar-value">$55.7bn</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">Alphabet</span>
+            <div class="bar-track">
+              <div class="bar-fill" style="width:73%;background:linear-gradient(90deg,#2a6a8a,#4a9abf);animation-delay:0.2s"></div>
+            </div>
+            <span class="bar-value">$52.5bn</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">Amazon</span>
+            <div class="bar-track">
+              <div class="bar-fill" style="width:100%;background:linear-gradient(90deg,#2a8a5a,#4abf8a);animation-delay:0.3s"></div>
+            </div>
+            <span class="bar-value">$75.1bn</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">Meta</span>
+            <div class="bar-track">
+              <div class="bar-fill" style="width:55%;background:linear-gradient(90deg,#6a2a8a,#9a4abf);animation-delay:0.4s"></div>
+            </div>
+            <span class="bar-value">$38.0bn</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">Apple</span>
+            <div class="bar-track">
+              <div class="bar-fill" style="width:16%;background:linear-gradient(90deg,#8a6a2a,#bfa04a);animation-delay:0.5s"></div>
+            </div>
+            <span class="bar-value">$9.4bn</span>
+          </div>
+        </div>
+        <div class="chart-caption">Source: Company filings (10-K/20-F). FY2024 figures. Figures rounded.</div>
+      </div>
+
+      <!-- Key findings -->
+      <div class="findings-box">
+        <div class="findings-title">Key Findings</div>
+        <ul class="findings-list">
+          <li>Combined capex from Microsoft, Alphabet, Amazon, and Meta reached roughly $221 billion in FY2024 — up from $107 billion in FY2020, a doubling in four years.</li>
+          <li>Nvidia generated over $60 billion in data centre revenue in FY2024, effectively absorbing a significant portion of Big Tech's AI infrastructure spending.</li>
+          <li>Return on invested capital (ROIC) across these companies has held up — so far — but analysts are beginning to ask how long it can last.</li>
+          <li>The spillover into the real economy — from electricity demand to construction labour — is now detectable in macroeconomic data.</li>
+        </ul>
+      </div>
+
+      <div class="prose">
+
+        <p>Somewhere in the Nevada desert, a construction crew is pouring concrete for a data centre the size of a small town. In Singapore, another facility is quietly humming through a million kilowatt-hours of electricity every day. In Dublin, planning authorities are fielding objections from locals who did not expect their suburb to become a node in a global computing network. These are the physical manifestations of the largest voluntary capital expenditure cycle in the history of the technology industry — and possibly in the history of any industry.</p>
+
+        <p>The term "supercycle" gets overused in finance. Commodity markets in particular have a habit of elevating ordinary price swings into grand narratives. But the AI infrastructure buildout deserves the label. The numbers are extraordinary in scale, the beneficiaries extend far beyond Silicon Valley, and the implications — for equity valuations, for electricity grids, for labour markets, for sovereign debt — are only beginning to be understood.</p>
+
+        <h2>The Investment Case — and Its Tensions</h2>
+
+        <p>To understand why technology companies are spending at this pace, you need to understand the competitive logic they face. In large-language-model AI, the dominant paradigm remains one of scale: bigger models trained on more data with more compute tend to outperform smaller ones. That creates a race dynamic. If your competitor is spending $50 billion on data centre infrastructure, you cannot afford to spend $20 billion — at least, not if you believe the model scaling hypothesis holds.</p>
+
+        <p>This logic is clearest at Microsoft. The company has committed to a ten-year, $80 billion capital expenditure programme specifically oriented around AI infrastructure, roughly half of which will be deployed in the United States. Its partnership with OpenAI — a bet made when OpenAI was still a research lab — has transformed into one of the most consequential business relationships in technology. Azure's AI services are growing at triple-digit rates on a reported basis, giving the capex programme a revenue justification that analysts can, at least partially, model.</p>
+
+        <div class="pull-quote">"The question is not whether AI will create value. The question is whether it will create enough value, fast enough, to justify an investment cycle of this magnitude."</div>
+
+        <p>At Alphabet, the picture is more complex. Google's dominant position in search — still the engine of roughly 75% of its revenue — faces its first credible structural challenge in two decades. AI-powered search results that answer questions directly, rather than directing users to third-party websites, threaten the very click-through model that built the company. Alphabet is therefore spending on AI defensively as much as offensively: protecting existing revenue streams while competing to establish new ones in cloud infrastructure and enterprise software.</p>
+
+        <p>Amazon's capex tells a different story again. Its $75 billion in FY2024 capital expenditure — the largest of any company in the cohort — reflects not only AWS's cloud and AI ambitions but also the physical infrastructure of its logistics network. Separating the two is difficult from public filings, though AWS revenue growth and management guidance suggest a substantial and growing share is directed towards AI-oriented compute.</p>
+
+        <h2>Nvidia: The Toll Booth on the AI Highway</h2>
+
+        <p>No analysis of the AI capex cycle is complete without examining its primary beneficiary. Nvidia's data centre segment — which sells the high-performance GPUs that power AI training and inference — reported revenue of $47.5 billion in FY2024, a figure that would have ranked it as a standalone Fortune 100 company. Its gross margins in this segment exceed 70%.</p>
+
+        <!-- Nvidia revenue table -->
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Segment</th>
+              <th>FY2022 Revenue</th>
+              <th>FY2024 Revenue</th>
+              <th>YoY Growth</th>
+              <th>Gross Margin</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Data Centre</strong></td>
+              <td class="num">$10.6bn</td>
+              <td class="num">$47.5bn</td>
+              <td class="up">+347%</td>
+              <td class="num">~73%</td>
+            </tr>
+            <tr>
+              <td>Gaming</td>
+              <td class="num">$12.5bn</td>
+              <td class="num">$10.4bn</td>
+              <td class="down">−17%</td>
+              <td class="num">~62%</td>
+            </tr>
+            <tr>
+              <td>Professional Visualisation</td>
+              <td class="num">$2.1bn</td>
+              <td class="num">$1.7bn</td>
+              <td class="down">−19%</td>
+              <td class="num">~68%</td>
+            </tr>
+            <tr>
+              <td>Automotive</td>
+              <td class="num">$0.6bn</td>
+              <td class="num">$1.1bn</td>
+              <td class="up">+83%</td>
+              <td class="num">~67%</td>
+            </tr>
+            <tr>
+              <td class="note" colspan="5">Source: Nvidia 10-K filings (FY2022, FY2024). FY ends January. Figures rounded.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>The structural advantages underpinning Nvidia's position are significant. Its CUDA software ecosystem — built over nearly two decades — creates powerful switching costs. Training a state-of-the-art AI model requires not just hardware but a vast library of optimised software, tools, and frameworks, most of which run natively on Nvidia's GPUs. Competitors from AMD to Intel to Google's own custom silicon (TPUs) have made inroads, but Nvidia retains a commanding share of the training market.</p>
+
+        <p>The investment debate around Nvidia is not whether the AI buildout is real — it is — but whether the company's current valuation already prices in a decade of growth. At the peak of its valuation in mid-2024, Nvidia traded at over 35 times forward revenue. That is a multiple that demands not just continued AI investment, but an acceleration of it.</p>
+
+        <div class="method-box">
+          <div class="method-box-title">A Note on Data &amp; Methodology</div>
+          <p>All capex figures are sourced directly from annual reports and SEC filings (10-K and 20-F forms). Where companies do not separately disclose AI-specific capital expenditure, total capex figures are used. Nvidia segment data is drawn from the company's FY2024 10-K. Growth rates are calculated on a reported basis and are not adjusted for acquisitions or disposals. Readers who wish to interrogate the underlying data can access the referenced filings via the SEC's EDGAR database.</p>
+        </div>
+
+        <h2>The Macroeconomic Spillovers</h2>
+
+        <p>An investment cycle of this magnitude does not stay within corporate balance sheets. It ripples outward — into electricity infrastructure, construction, semiconductors, and the labour market. Understanding those spillovers is what elevates this from a stock-picking exercise into macroeconomic analysis.</p>
+
+        <p>The electricity demand picture is perhaps the most consequential. According to estimates from the International Energy Agency, data centres consumed roughly 460 terawatt-hours of electricity globally in 2022. By 2026, that figure is projected to roughly double. In the United States, grid operators from PJM to ERCOT have revised their long-run demand forecasts sharply upward — reversing a decade-long trend of flat or declining industrial power demand.</p>
+
+        <!-- Line chart: power demand -->
+        <div class="line-chart-wrap">
+          <div class="chart-title">US Data Centre Electricity Demand — Projected Growth (TWh)</div>
+          <div class="chart-subtitle">Actual 2020–2023; IEA-based estimates 2024–2027</div>
+          <svg class="line-svg" viewBox="0 0 600 130" xmlns="http://www.w3.org/2000/svg">
+            <!-- Grid lines -->
+            <line x1="60" y1="10" x2="580" y2="10" stroke="#d4c9b8" stroke-width="0.5"/>
+            <line x1="60" y1="40" x2="580" y2="40" stroke="#d4c9b8" stroke-width="0.5"/>
+            <line x1="60" y1="70" x2="580" y2="70" stroke="#d4c9b8" stroke-width="0.5"/>
+            <line x1="60" y1="100" x2="580" y2="100" stroke="#d4c9b8" stroke-width="0.5"/>
+            <!-- Y labels -->
+            <text x="50" y="13" text-anchor="end" font-family="DM Sans" font-size="9" fill="#8a7a6a">800</text>
+            <text x="50" y="43" text-anchor="end" font-family="DM Sans" font-size="9" fill="#8a7a6a">600</text>
+            <text x="50" y="73" text-anchor="end" font-family="DM Sans" font-size="9" fill="#8a7a6a">400</text>
+            <text x="50" y="103" text-anchor="end" font-family="DM Sans" font-size="9" fill="#8a7a6a">200</text>
+            <!-- Data line: actual (solid) -->
+            <polyline points="80,95 160,90 240,85 320,78" fill="none" stroke="#1a1510" stroke-width="2" stroke-linejoin="round"/>
+            <!-- Data line: projected (dashed) -->
+            <polyline points="320,78 400,60 480,38 560,14" fill="none" stroke="#c8832a" stroke-width="2" stroke-dasharray="6 3" stroke-linejoin="round"/>
+            <!-- Area under projected -->
+            <polygon points="320,78 400,60 480,38 560,14 560,130 320,130" fill="rgba(200,131,42,0.07)"/>
+            <!-- X labels -->
+            <text x="80" y="120" text-anchor="middle" font-family="DM Sans" font-size="9" fill="#8a7a6a">2020</text>
+            <text x="160" y="120" text-anchor="middle" font-family="DM Sans" font-size="9" fill="#8a7a6a">2021</text>
+            <text x="240" y="120" text-anchor="middle" font-family="DM Sans" font-size="9" fill="#8a7a6a">2022</text>
+            <text x="320" y="120" text-anchor="middle" font-family="DM Sans" font-size="9" fill="#8a7a6a">2023</text>
+            <text x="400" y="120" text-anchor="middle" font-family="DM Sans" font-size="9" fill="#c8832a">2024</text>
+            <text x="480" y="120" text-anchor="middle" font-family="DM Sans" font-size="9" fill="#c8832a">2025</text>
+            <text x="560" y="120" text-anchor="middle" font-family="DM Sans" font-size="9" fill="#c8832a">2026E</text>
+            <!-- Legend -->
+            <line x1="80" y1="108" x2="100" y2="108" stroke="#1a1510" stroke-width="2"/>
+            <text x="104" y="111" font-family="DM Sans" font-size="8" fill="#4a4035">Actual</text>
+            <line x1="150" y1="108" x2="170" y2="108" stroke="#c8832a" stroke-width="2" stroke-dasharray="4 2"/>
+            <text x="174" y="111" font-family="DM Sans" font-size="8" fill="#4a4035">Projected (IEA-based est.)</text>
+          </svg>
+        </div>
+
+        <p>This creates a feedback loop that touches multiple sectors. Utilities companies are revising their capital expenditure upward to build new generation capacity. Construction firms are bidding on data centre contracts at record rates. The chip-on-wafer supply chain — from TSMC's fabs in Taiwan and Arizona to ASML's extreme ultraviolet lithography machines in the Netherlands — is operating at or near capacity.</p>
+
+        <p>The labour market effects are more diffuse but detectable. Electrical engineers, data centre technicians, and high-voltage grid workers are in short supply across the United States and Europe. Meanwhile, the productivity benefits of AI — the economic rationale that underpins the investment case — remain stubbornly difficult to measure in the aggregate data. GDP growth, productivity statistics, and total factor productivity estimates have not, so far, shown the step-change that would vindicate $300 billion in annual spending. That may reflect measurement lags — the internet took a decade to show up in productivity statistics — or it may reflect something more concerning about the returns on this investment.</p>
+
+        <h2>The Bear Case: When Does the Music Stop?</h2>
+
+        <p>Any honest analysis must engage with the sceptical view. The bull case for AI capex is well-articulated and widely held; the bear case deserves equal rigour.</p>
+
+        <p>The central concern is a mismatch between the rate of investment and the rate of monetisation. Building data centres takes 18–36 months. Training large models requires clusters of thousands of GPUs running for weeks. But enterprise adoption of AI tools — the point at which these investments generate recurring revenue — is proceeding more slowly than the infrastructure buildout implies.</p>
+
+        <p>A second concern is concentration risk. The current capex cycle is being driven by five or six companies. If even one of them — say, in response to a disappointing earnings quarter or a shift in investor sentiment — materially reduces its spending guidance, the effects on Nvidia's revenue, on data centre construction pipelines, and on the broader AI supply chain could be swift and sharp. Unlike a commodity supercycle, where hundreds of producers make independent decisions, this one has a very small number of swing investors.</p>
+
+        <p>A third concern is geopolitical. The most advanced AI chips are designed by US companies (Nvidia, AMD, Intel) and manufactured almost entirely in Taiwan (TSMC). The concentration of the entire AI supply chain in a single geography that faces significant geopolitical risk is not lost on policymakers in Washington, Brussels, or Beijing. Export controls on advanced semiconductors to China — already in force — could be tightened further, or could provoke countermeasures that disrupt the supply chain in either direction.</p>
+
+        <h2>Conclusion: Supercycle or Bubble?</h2>
+
+        <p>The AI capex boom is real, it is large, and it is reshaping the global technology industry in ways that will outlast any single company or product. The macroeconomic implications — for energy, for labour, for the trade in semiconductors — are no longer speculative. They are present in the data.</p>
+
+        <p>Whether the equity valuations attached to this investment cycle are justified is a harder question, and one that depends on assumptions about AI adoption timelines, competitive dynamics, and the ultimate productivity impact of the technology. History suggests that transformative technology platforms do eventually justify their infrastructure investment — but not always on the timetable that equity markets price in. The internet buildout of the late 1990s created enormous long-run value. It also produced one of the most dramatic misallocations of capital in financial history before that value was realised.</p>
+
+        <p>The AI capex supercycle may prove to be both: a genuinely transformative investment in the technologies that will define the next decade, and a valuation story that, in places, has run ahead of the evidence. Holding both of those views simultaneously is not sitting on the fence. It is what rigorous analysis demands.</p>
+
+      </div>
+
+      <!-- Tags -->
+      <div style="margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid var(--rule);">
+        <div style="font-family:var(--sans);font-size:0.65rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-light);margin-bottom:0.7rem;">Topics</div>
+        <div class="tags">
+          <span class="tag">Artificial Intelligence</span>
+          <span class="tag">Tech Equities</span>
+          <span class="tag">Capital Expenditure</span>
+          <span class="tag">Nvidia</span>
+          <span class="tag">Semiconductors</span>
+          <span class="tag">Big Tech</span>
+          <span class="tag">Equity Analysis</span>
+          <span class="tag">US Economy</span>
+        </div>
+      </div>
+
+    </article>
+
+    <!-- ── SIDEBAR ── -->
+    <aside class="article-sidebar">
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">Key Statistics</div>
+        <div class="sidebar-stat">
+          <div class="sidebar-stat-number">$221bn</div>
+          <div class="sidebar-stat-label">Combined capex, Big 4 tech companies, FY2024</div>
+        </div>
+        <div class="sidebar-stat">
+          <div class="sidebar-stat-number">+347%</div>
+          <div class="sidebar-stat-label">Nvidia data centre revenue growth, FY2022 to FY2024</div>
+        </div>
+        <div class="sidebar-stat">
+          <div class="sidebar-stat-number">~73%</div>
+          <div class="sidebar-stat-label">Nvidia data centre gross margin</div>
+        </div>
+        <div class="sidebar-stat">
+          <div class="sidebar-stat-number">2×</div>
+          <div class="sidebar-stat-label">Projected increase in global data centre power demand by 2026</div>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">Related Reading</div>
+        <div class="related-article">
+          <div class="related-kicker">Semiconductors</div>
+          <div class="related-headline">TSMC's Arizona Gamble: Geopolitics Meets the Chip Supply Chain</div>
+        </div>
+        <div class="related-article">
+          <div class="related-kicker">Energy</div>
+          <div class="related-headline">The Grid Cannot Keep Up: How Data Centres Are Straining US Power Infrastructure</div>
+        </div>
+        <div class="related-article">
+          <div class="related-kicker">Productivity</div>
+          <div class="related-headline">The Productivity Paradox Returns — With AI in the Frame</div>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">Data Sources</div>
+        <div style="font-family:var(--sans);font-size:0.78rem;font-weight:300;color:var(--ink-light);line-height:1.7;">
+          <p>· SEC EDGAR (10-K filings)</p>
+          <p>· International Energy Agency</p>
+          <p>· Company investor relations</p>
+          <p>· World Bank Open Data</p>
+          <p>· Federal Reserve Economic Data (FRED)</p>
+        </div>
+      </div>
+
+    </aside>
+
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <a href="index.html" class="footer-logo">Basis Point<span>.</span></a>
+      <div style="font-family:var(--sans);font-size:0.75rem;font-weight:300;color:rgba(250,247,242,0.5);">Independent analysis of global macroeconomic trends</div>
+    </div>
+    <div class="footer-copy">© 2026 Basis Point. All rights reserved. Analysis is for informational purposes only and does not constitute investment advice.</div>
+  </footer>
+
+</body>
+</html>
