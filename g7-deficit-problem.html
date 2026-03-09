@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The G7's Deficit Problem Isn't Going Away — Basis Point</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400;1,600&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --ink: #1a1510; --ink-light: #4a4035; --cream: #faf7f2; --cream-dark: #f0ebe0; --amber: #c8832a; --amber-light: #e8a84a; --rule: #d4c9b8; --serif: 'Playfair Display', Georgia, serif; --body: 'Source Serif 4', Georgia, serif; --sans: 'DM Sans', sans-serif; }
+    body { background: var(--cream); color: var(--ink); font-family: var(--body); font-size: 18px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    .masthead { background: var(--ink); color: var(--amber-light); text-align: center; padding: 0.35rem 1rem; font-family: var(--sans); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; }
+    header { border-bottom: 3px solid var(--ink); background: var(--cream); position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    .header-top { display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 0 0.8rem; border-bottom: 1px solid var(--rule); }
+    .logo { font-family: var(--serif); font-size: 2rem; font-weight: 800; color: var(--ink); text-decoration: none; }
+    .logo span { color: var(--amber); }
+    nav { display: flex; gap: 0; padding: 0.5rem 0; }
+    nav a { font-family: var(--sans); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); text-decoration: none; padding: 0.3rem 1rem 0.3rem 0; margin-right: 0.5rem; border-right: 1px solid var(--rule); transition: color 0.2s; }
+    nav a:last-child { border-right: none; }
+    nav a:hover, nav a.active { color: var(--amber); }
+    .article-wrapper { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem; display: grid; grid-template-columns: 680px 1fr; gap: 4rem; align-items: start; }
+    .article-kicker { font-family: var(--sans); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--amber); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+    .article-kicker::before { content: ''; display: inline-block; width: 20px; height: 2px; background: var(--amber); }
+    .article-headline { font-family: var(--serif); font-size: 2.8rem; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 1rem; }
+    .article-standfirst { font-family: var(--body); font-size: 1.15rem; font-weight: 400; font-style: italic; color: var(--ink-light); line-height: 1.55; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule); }
+    .article-meta { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; font-family: var(--sans); font-size: 0.75rem; color: var(--ink-light); }
+    .article-meta .author { font-weight: 600; color: var(--ink); }
+    .article-meta .dot { color: var(--rule); }
+    .article-hero-visual { width: 100%; border-radius: 3px; margin-bottom: 2rem; background: linear-gradient(135deg, #1a1015 0%, #2a1a30 50%, #201a10 100%); padding: 2.5rem; position: relative; overflow: hidden; }
+    .article-hero-visual::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E"); }
+    .visual-label { font-family: var(--sans); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber-light); margin-bottom: 1.2rem; }
+    .bar-chart { display: flex; flex-direction: column; gap: 0.7rem; }
+    .bar-row { display: flex; align-items: center; gap: 0.8rem; }
+    .bar-label { font-family: var(--sans); font-size: 0.7rem; font-weight: 500; color: rgba(250,247,242,0.8); width: 80px; flex-shrink: 0; }
+    .bar-track { flex: 1; height: 22px; background: rgba(255,255,255,0.07); border-radius: 2px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 2px; animation: barGrow 1s ease both; transform-origin: left; }
+    @keyframes barGrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+    .bar-value { font-family: var(--sans); font-size: 0.72rem; font-weight: 600; color: rgba(250,247,242,0.9); width: 65px; flex-shrink: 0; text-align: right; }
+    .chart-caption { font-family: var(--sans); font-size: 0.65rem; color: rgba(250,247,242,0.4); margin-top: 1rem; font-style: italic; }
+    .prose p { margin-bottom: 1.4rem; color: var(--ink); }
+    .prose h2 { font-family: var(--serif); font-size: 1.6rem; font-weight: 700; line-height: 1.2; color: var(--ink); margin: 2.5rem 0 1rem; padding-top: 2rem; border-top: 1px solid var(--rule); }
+    .pull-quote { margin: 2.5rem 0; padding: 1.5rem 0 1.5rem 1.8rem; border-left: 3px solid var(--amber); font-family: var(--serif); font-size: 1.35rem; font-style: italic; line-height: 1.4; color: var(--ink); }
+    .data-table { width: 100%; border-collapse: collapse; margin: 2rem 0; font-family: var(--sans); font-size: 0.82rem; }
+    .data-table thead th { font-weight: 600; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); padding: 0.6rem 0.8rem; border-bottom: 2px solid var(--ink); text-align: left; }
+    .data-table tbody tr { border-bottom: 1px solid var(--rule); transition: background 0.15s; }
+    .data-table tbody tr:hover { background: var(--cream-dark); }
+    .data-table tbody td { padding: 0.7rem 0.8rem; color: var(--ink); }
+    .data-table .num { font-weight: 600; }
+    .data-table .up { color: #2a7a40; font-weight: 600; }
+    .data-table .down { color: #8a2a2a; font-weight: 600; }
+    .data-table .note { color: var(--ink-light); font-size: 0.75rem; }
+    .method-box { background: var(--cream-dark); border: 1px solid var(--rule); border-left: 3px solid var(--amber); padding: 1.5rem; margin: 2.5rem 0; border-radius: 2px; }
+    .method-box-title { font-family: var(--sans); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.6rem; }
+    .method-box p { font-size: 0.85rem; font-weight: 300; color: var(--ink-light); line-height: 1.6; margin-bottom: 0 !important; }
+    .findings-box { background: var(--ink); color: var(--cream); padding: 2rem; border-radius: 3px; margin: 2.5rem 0; }
+    .findings-title { font-family: var(--sans); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber-light); margin-bottom: 1.2rem; }
+    .findings-list { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; }
+    .findings-list li { font-size: 0.9rem; font-weight: 300; color: rgba(250,247,242,0.85); line-height: 1.5; display: flex; gap: 0.7rem; }
+    .findings-list li::before { content: '→'; color: var(--amber-light); font-weight: 600; flex-shrink: 0; }
+    .article-sidebar { position: sticky; top: 100px; }
+    .sidebar-section { margin-bottom: 2.5rem; padding-bottom: 2.5rem; border-bottom: 1px solid var(--rule); }
+    .sidebar-section:last-child { border-bottom: none; }
+    .sidebar-label { font-family: var(--sans); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); margin-bottom: 1rem; }
+    .sidebar-stat { margin-bottom: 1.2rem; }
+    .sidebar-stat-number { font-family: var(--serif); font-size: 2rem; font-weight: 800; color: var(--ink); line-height: 1; margin-bottom: 0.2rem; }
+    .sidebar-stat-label { font-family: var(--sans); font-size: 0.72rem; font-weight: 300; color: var(--ink-light); line-height: 1.4; }
+    .related-article { margin-bottom: 1.2rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--rule); }
+    .related-article:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .related-kicker { font-family: var(--sans); font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.3rem; }
+    .related-headline { font-family: var(--serif); font-size: 0.95rem; font-weight: 600; line-height: 1.3; color: var(--ink); cursor: pointer; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tag { font-family: var(--sans); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-light); border: 1px solid var(--rule); padding: 0.3rem 0.7rem; border-radius: 20px; cursor: pointer; transition: all 0.2s; }
+    .tag:hover { border-color: var(--amber); color: var(--amber); }
+    footer { background: var(--ink); color: var(--cream); padding: 2.5rem 2rem 1.5rem; margin-top: 4rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 1rem; }
+    .footer-logo { font-family: var(--serif); font-size: 1.5rem; font-weight: 800; color: var(--cream); text-decoration: none; }
+    .footer-logo span { color: var(--amber); }
+    .footer-copy { max-width: 1100px; margin: 0 auto; font-family: var(--sans); font-size: 0.7rem; font-weight: 300; color: rgba(250,247,242,0.35); }
+    @media (max-width: 960px) { .article-wrapper { grid-template-columns: 1fr; } .article-sidebar { position: static; } }
+    @media (max-width: 600px) { .article-headline { font-size: 2rem; } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .article-body { animation: fadeUp 0.6s ease both; }
+  </style>
+</head>
+<body>
+  <div class="masthead">Global macroeconomic analysis &amp; commentary &nbsp;·&nbsp; Basis Point</div>
+  <header>
+    <div class="header-inner">
+      <div class="header-top">
+        <a href="index.html" class="logo">Basis Point<span>.</span></a>
+        <div style="font-family:var(--sans);font-size:0.72rem;color:var(--ink-light);">Monday, 12 January 2026</div>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="#" class="active">Macro</a>
+        <a href="#">Europe</a>
+        <a href="#">Tech &amp; Innovation</a>
+        <a href="#">Emerging Markets</a>
+        <a href="#">Data</a>
+        <a href="#">Opinion</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="article-wrapper">
+    <article class="article-body">
+      <div class="article-kicker">Fiscal Policy · Global Macro</div>
+      <h1 class="article-headline">The G7's Deficit Problem Isn't Going Away</h1>
+      <p class="article-standfirst">From Washington to Tokyo, the governments that borrowed freely during the pandemic are now confronting bond markets demanding higher yields to finance still-expanding deficits. The era of cheap government borrowing may be over — with profound consequences for public services, investment, and growth.</p>
+      <div class="article-meta">
+        <span class="author">By The Editors</span>
+        <span class="dot">·</span>
+        <span>12 January 2026</span>
+        <span class="dot">·</span>
+        <span>10 min read</span>
+        <span class="dot">·</span>
+        <span style="color:var(--amber)">Fiscal Policy</span>
+      </div>
+
+      <div class="article-hero-visual">
+        <div class="visual-label">G7 Fiscal Deficits as % of GDP, 2025 Estimate</div>
+        <div class="bar-chart">
+          <div class="bar-row">
+            <span class="bar-label">United States</span>
+            <div class="bar-track"><div class="bar-fill" style="width:96%;background:linear-gradient(90deg,#8a2a2a,#c84a4a);animation-delay:0.1s"></div></div>
+            <span class="bar-value">−6.2% GDP</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">Italy</span>
+            <div class="bar-track"><div class="bar-fill" style="width:70%;background:linear-gradient(90deg,#8a4a2a,#c87a4a);animation-delay:0.2s"></div></div>
+            <span class="bar-value">−4.5% GDP</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">France</span>
+            <div class="bar-track"><div class="bar-fill" style="width:65%;background:linear-gradient(90deg,#8a5a2a,#c88a4a);animation-delay:0.3s"></div></div>
+            <span class="bar-value">−4.2% GDP</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">Japan</span>
+            <div class="bar-track"><div class="bar-fill" style="width:55%;background:linear-gradient(90deg,#6a5a2a,#bfa04a);animation-delay:0.4s"></div></div>
+            <span class="bar-value">−3.5% GDP</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">United Kingdom</span>
+            <div class="bar-track"><div class="bar-fill" style="width:45%;background:linear-gradient(90deg,#5a5a2a,#9a9a4a);animation-delay:0.5s"></div></div>
+            <span class="bar-value">−2.9% GDP</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">Germany</span>
+            <div class="bar-track"><div class="bar-fill" style="width:20%;background:linear-gradient(90deg,#2a5a3a,#4a8a5a);animation-delay:0.6s"></div></div>
+            <span class="bar-value">−1.3% GDP</span>
+          </div>
+        </div>
+        <div class="chart-caption">Source: IMF Fiscal Monitor (October 2025). Negative values indicate deficit. Canada excluded for scale.</div>
+      </div>
+
+      <div class="findings-box">
+        <div class="findings-title">Key Findings</div>
+        <ul class="findings-list">
+          <li>The United States is running a fiscal deficit of over 6% of GDP in peacetime — a level historically associated with recessions or major crises, not periods of relatively strong growth.</li>
+          <li>Total G7 government debt now stands at roughly $50 trillion, with debt-to-GDP ratios in Japan, Italy, and the US all exceeding 100%.</li>
+          <li>Rising interest rates have dramatically increased the cost of servicing that debt: US federal interest payments are now running at over $1 trillion annually for the first time in history.</li>
+          <li>The political economy of consolidation — cutting spending or raising taxes — remains deeply unattractive in most democracies, suggesting deficits will persist at elevated levels.</li>
+        </ul>
+      </div>
+
+      <div class="prose">
+        <p>There is a number that sits at the heart of the developed world's fiscal predicament, and it is not talked about nearly enough: $1 trillion. That is the annual amount the United States federal government is now spending simply to service the interest on its existing debt — more than it spends on defence, more than on Medicaid, more than on any single discretionary programme. And it is a figure that is growing, not shrinking, as maturing low-rate bonds are refinanced at the higher rates that have prevailed since 2022.</p>
+
+        <p>This is the fiscal reckoning that several economists warned about during the pandemic-era borrowing surge, and that bond markets periodically threaten to enforce. Understanding it requires stepping back from the immediate political debates — about tax cuts, spending increases, and budget standoffs — and examining the structural arithmetic of public finances across the G7.</p>
+
+        <h2>How We Got Here</h2>
+
+        <p>The debt levels weighing on rich-world governments today are the product of three compounding forces. The first was the 2008 financial crisis, which required massive bank bailouts and fiscal stimulus that pushed deficits sharply higher. The second was a decade of slow growth and low tax revenues that made those deficits persistent even as the acute crisis passed. The third, and most dramatic, was the Covid-19 pandemic, during which governments borrowed an additional $10–15 trillion globally to fund furlough schemes, business support, and healthcare spending.</p>
+
+        <table class="data-table">
+          <thead>
+            <tr><th>Country</th><th>Debt/GDP 2007</th><th>Debt/GDP 2019</th><th>Debt/GDP 2025E</th><th>Change Since 2007</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>United States</strong></td><td class="num">63%</td><td class="num">108%</td><td class="num">126%</td><td class="down">+63pp</td></tr>
+            <tr><td>Japan</td><td class="num">175%</td><td class="num">198%</td><td class="num">255%</td><td class="down">+80pp</td></tr>
+            <tr><td>Italy</td><td class="num">103%</td><td class="num">135%</td><td class="num">141%</td><td class="down">+38pp</td></tr>
+            <tr><td>France</td><td class="num">64%</td><td class="num">98%</td><td class="num">114%</td><td class="down">+50pp</td></tr>
+            <tr><td>United Kingdom</td><td class="num">43%</td><td class="num">85%</td><td class="num">101%</td><td class="down">+58pp</td></tr>
+            <tr><td>Germany</td><td class="num">64%</td><td class="num">59%</td><td class="num">64%</td><td class="num">0pp</td></tr>
+            <tr><td class="note" colspan="5">Source: IMF Fiscal Monitor (October 2025). General government gross debt as % of GDP. Estimates for 2025.</td></tr>
+          </tbody>
+        </table>
+
+        <p>What changed in 2022 was the interest rate environment. For a decade, governments had been able to borrow at near-zero rates — effectively being paid, in real terms, to take on debt. That made the debt-to-GDP ratios above manageable even at high absolute levels, because the annual cost of servicing them was trivial. Once the Federal Reserve, ECB, and Bank of England raised rates to combat inflation, the cost of refinancing that debt at maturity began to rise sharply. The US Treasury, which had locked in much of its borrowing at short maturities, has been particularly exposed.</p>
+
+        <div class="pull-quote">"Governments borrowed as if interest rates would stay near zero forever. The bill for that assumption is now arriving."</div>
+
+        <h2>The US as the Central Case</h2>
+
+        <p>The United States presents the starkest version of this problem, partly because of its scale and partly because of the political dysfunction that has made addressing it so difficult. A deficit of over 6% of GDP in a year when unemployment is below 4% and growth is positive is, by the standards of macroeconomic theory, deeply anomalous. Deficits of that magnitude are normally associated with recessions, wars, or major crises — not with periods of relative prosperity.</p>
+
+        <p>The explanation is partly structural — mandatory spending on Social Security and Medicare grows automatically as the population ages — and partly political. Neither major party has shown any serious willingness to raise taxes or cut entitlements at the scale that would be required to materially reduce the deficit. The result is a structural primary deficit that compounds with rising interest payments to produce a debt trajectory that the IMF and the Congressional Budget Office both describe as unsustainable.</p>
+
+        <h2>What Would Fiscal Consolidation Actually Require?</h2>
+
+        <p>The scale of adjustment needed to stabilise debt-to-GDP ratios in the United States, France, Italy, and the United Kingdom is substantial but not impossible. IMF estimates suggest that a primary surplus (revenues exceeding non-interest spending) of around 1.5–2% of GDP, sustained over a decade, would be sufficient to put debt ratios on a declining path in most cases. That requires either spending cuts, tax increases, or some combination of higher growth that raises revenues organically.</p>
+
+        <p>The problem is that all three mechanisms face significant political and economic constraints. Spending cuts in entitlement programmes face fierce electoral resistance. Tax increases on working-age populations risk damping the growth that makes debt sustainable. And higher growth — the most painless path — cannot be conjured by policy alone. Japan's experience is sobering: decades of attempted consolidation have repeatedly been interrupted by downturns that forced the government to abandon its targets and borrow more.</p>
+
+        <div class="method-box">
+          <div class="method-box-title">A Note on Data &amp; Methodology</div>
+          <p>Fiscal data is sourced from the IMF Fiscal Monitor (October 2025 edition) and IMF World Economic Outlook. Debt-to-GDP figures refer to general government gross debt. The US interest payment figures are sourced from the US Congressional Budget Office (CBO) and Treasury data. All 2025 figures are estimates subject to revision.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid var(--rule);">
+        <div style="font-family:var(--sans);font-size:0.65rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-light);margin-bottom:0.7rem;">Topics</div>
+        <div class="tags">
+          <span class="tag">Fiscal Policy</span><span class="tag">Government Debt</span><span class="tag">US Economy</span><span class="tag">G7</span><span class="tag">Bond Markets</span><span class="tag">Public Finance</span><span class="tag">IMF</span>
+        </div>
+      </div>
+    </article>
+
+    <aside class="article-sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-label">Key Statistics</div>
+        <div class="sidebar-stat"><div class="sidebar-stat-number">$1tn</div><div class="sidebar-stat-label">Annual US federal interest payments — a historic first</div></div>
+        <div class="sidebar-stat"><div class="sidebar-stat-number">126%</div><div class="sidebar-stat-label">US debt-to-GDP ratio, 2025 estimate</div></div>
+        <div class="sidebar-stat"><div class="sidebar-stat-number">−6.2%</div><div class="sidebar-stat-label">US fiscal deficit as % of GDP — a peacetime anomaly</div></div>
+        <div class="sidebar-stat"><div class="sidebar-stat-number">255%</div><div class="sidebar-stat-label">Japan's debt-to-GDP — the highest in the developed world</div></div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-label">Related Reading</div>
+        <div class="related-article"><div class="related-kicker">Monetary Policy</div><div class="related-headline">The Quiet Unravelling of the Global Rate Cycle</div></div>
+        <div class="related-article"><div class="related-kicker">Europe</div><div class="related-headline">Germany's Growth Problem Is Structural, Not Cyclical</div></div>
+        <div class="related-article"><div class="related-kicker">Emerging Markets</div><div class="related-headline">Africa's Debt Reckoning: What Comes After the IMF</div></div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-label">Data Sources</div>
+        <div style="font-family:var(--sans);font-size:0.78rem;font-weight:300;color:var(--ink-light);line-height:1.7;">
+          <p>· IMF Fiscal Monitor</p>
+          <p>· IMF World Economic Outlook</p>
+          <p>· US Congressional Budget Office</p>
+          <p>· US Treasury Department</p>
+          <p>· OECD Economic Outlook</p>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <a href="index.html" class="footer-logo">Basis Point<span>.</span></a>
+      <div style="font-family:var(--sans);font-size:0.75rem;font-weight:300;color:rgba(250,247,242,0.5);">Independent analysis of global macroeconomic trends</div>
+    </div>
+    <div class="footer-copy">© 2026 Basis Point. All rights reserved. Analysis is for informational purposes only and does not constitute investment advice.</div>
+  </footer>
+</body>
+</html>

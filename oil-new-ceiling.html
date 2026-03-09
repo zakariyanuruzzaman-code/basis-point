@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oil's New Ceiling: Why $90 Feels Distant Again — Basis Point</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400;1,600&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --ink: #1a1510; --ink-light: #4a4035; --cream: #faf7f2; --cream-dark: #f0ebe0; --amber: #c8832a; --amber-light: #e8a84a; --rule: #d4c9b8; --serif: 'Playfair Display', Georgia, serif; --body: 'Source Serif 4', Georgia, serif; --sans: 'DM Sans', sans-serif; }
+    body { background: var(--cream); color: var(--ink); font-family: var(--body); font-size: 18px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    .masthead { background: var(--ink); color: var(--amber-light); text-align: center; padding: 0.35rem 1rem; font-family: var(--sans); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; }
+    header { border-bottom: 3px solid var(--ink); background: var(--cream); position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    .header-top { display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 0 0.8rem; border-bottom: 1px solid var(--rule); }
+    .logo { font-family: var(--serif); font-size: 2rem; font-weight: 800; color: var(--ink); text-decoration: none; }
+    .logo span { color: var(--amber); }
+    nav { display: flex; gap: 0; padding: 0.5rem 0; }
+    nav a { font-family: var(--sans); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); text-decoration: none; padding: 0.3rem 1rem 0.3rem 0; margin-right: 0.5rem; border-right: 1px solid var(--rule); transition: color 0.2s; }
+    nav a:last-child { border-right: none; }
+    nav a:hover, nav a.active { color: var(--amber); }
+    .article-wrapper { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem; display: grid; grid-template-columns: 680px 1fr; gap: 4rem; align-items: start; }
+    .article-kicker { font-family: var(--sans); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--amber); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+    .article-kicker::before { content: ''; display: inline-block; width: 20px; height: 2px; background: var(--amber); }
+    .article-headline { font-family: var(--serif); font-size: 2.8rem; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 1rem; }
+    .article-standfirst { font-family: var(--body); font-size: 1.15rem; font-weight: 400; font-style: italic; color: var(--ink-light); line-height: 1.55; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule); }
+    .article-meta { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; font-family: var(--sans); font-size: 0.75rem; color: var(--ink-light); }
+    .article-meta .author { font-weight: 600; color: var(--ink); }
+    .article-meta .dot { color: var(--rule); }
+    .article-hero-visual { width: 100%; border-radius: 3px; margin-bottom: 2rem; background: linear-gradient(135deg, #1a1008 0%, #2a2010 60%, #1a1518 100%); padding: 2.5rem; position: relative; overflow: hidden; }
+    .article-hero-visual::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E"); }
+    .visual-label { font-family: var(--sans); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber-light); margin-bottom: 1.5rem; }
+    .line-chart-wrap-dark { margin: 0; }
+    .line-svg-dark { width: 100%; height: 140px; }
+    .chart-caption { font-family: var(--sans); font-size: 0.65rem; color: rgba(250,247,242,0.4); margin-top: 1rem; font-style: italic; }
+    .prose p { margin-bottom: 1.4rem; color: var(--ink); }
+    .prose h2 { font-family: var(--serif); font-size: 1.6rem; font-weight: 700; line-height: 1.2; color: var(--ink); margin: 2.5rem 0 1rem; padding-top: 2rem; border-top: 1px solid var(--rule); }
+    .pull-quote { margin: 2.5rem 0; padding: 1.5rem 0 1.5rem 1.8rem; border-left: 3px solid var(--amber); font-family: var(--serif); font-size: 1.35rem; font-style: italic; line-height: 1.4; color: var(--ink); }
+    .data-table { width: 100%; border-collapse: collapse; margin: 2rem 0; font-family: var(--sans); font-size: 0.82rem; }
+    .data-table thead th { font-weight: 600; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); padding: 0.6rem 0.8rem; border-bottom: 2px solid var(--ink); text-align: left; }
+    .data-table tbody tr { border-bottom: 1px solid var(--rule); transition: background 0.15s; }
+    .data-table tbody tr:hover { background: var(--cream-dark); }
+    .data-table tbody td { padding: 0.7rem 0.8rem; color: var(--ink); }
+    .data-table .num { font-weight: 600; }
+    .data-table .up { color: #2a7a40; font-weight: 600; }
+    .data-table .down { color: #8a2a2a; font-weight: 600; }
+    .data-table .note { color: var(--ink-light); font-size: 0.75rem; }
+    .line-chart-wrap { margin: 2rem 0; background: var(--cream-dark); border: 1px solid var(--rule); border-radius: 3px; padding: 1.5rem; }
+    .chart-title { font-family: var(--sans); font-size: 0.75rem; font-weight: 600; color: var(--ink); margin-bottom: 0.3rem; }
+    .chart-subtitle { font-family: var(--sans); font-size: 0.68rem; font-weight: 300; color: var(--ink-light); margin-bottom: 1rem; }
+    .line-svg { width: 100%; height: 130px; }
+    .method-box { background: var(--cream-dark); border: 1px solid var(--rule); border-left: 3px solid var(--amber); padding: 1.5rem; margin: 2.5rem 0; border-radius: 2px; }
+    .method-box-title { font-family: var(--sans); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.6rem; }
+    .method-box p { font-size: 0.85rem; font-weight: 300; color: var(--ink-light); line-height: 1.6; margin-bottom: 0 !important; }
+    .findings-box { background: var(--ink); color: var(--cream); padding: 2rem; border-radius: 3px; margin: 2.5rem 0; }
+    .findings-title { font-family: var(--sans); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber-light); margin-bottom: 1.2rem; }
+    .findings-list { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; }
+    .findings-list li { font-size: 0.9rem; font-weight: 300; color: rgba(250,247,242,0.85); line-height: 1.5; display: flex; gap: 0.7rem; }
+    .findings-list li::before { content: '→'; color: var(--amber-light); font-weight: 600; flex-shrink: 0; }
+    .article-sidebar { position: sticky; top: 100px; }
+    .sidebar-section { margin-bottom: 2.5rem; padding-bottom: 2.5rem; border-bottom: 1px solid var(--rule); }
+    .sidebar-section:last-child { border-bottom: none; }
+    .sidebar-label { font-family: var(--sans); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); margin-bottom: 1rem; }
+    .sidebar-stat { margin-bottom: 1.2rem; }
+    .sidebar-stat-number { font-family: var(--serif); font-size: 2rem; font-weight: 800; color: var(--ink); line-height: 1; margin-bottom: 0.2rem; }
+    .sidebar-stat-label { font-family: var(--sans); font-size: 0.72rem; font-weight: 300; color: var(--ink-light); line-height: 1.4; }
+    .related-article { margin-bottom: 1.2rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--rule); }
+    .related-article:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .related-kicker { font-family: var(--sans); font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.3rem; }
+    .related-headline { font-family: var(--serif); font-size: 0.95rem; font-weight: 600; line-height: 1.3; color: var(--ink); cursor: pointer; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tag { font-family: var(--sans); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-light); border: 1px solid var(--rule); padding: 0.3rem 0.7rem; border-radius: 20px; cursor: pointer; transition: all 0.2s; }
+    .tag:hover { border-color: var(--amber); color: var(--amber); }
+    footer { background: var(--ink); color: var(--cream); padding: 2.5rem 2rem 1.5rem; margin-top: 4rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 1rem; }
+    .footer-logo { font-family: var(--serif); font-size: 1.5rem; font-weight: 800; color: var(--cream); text-decoration: none; }
+    .footer-logo span { color: var(--amber); }
+    .footer-copy { max-width: 1100px; margin: 0 auto; font-family: var(--sans); font-size: 0.7rem; font-weight: 300; color: rgba(250,247,242,0.35); }
+    @media (max-width: 960px) { .article-wrapper { grid-template-columns: 1fr; } .article-sidebar { position: static; } }
+    @media (max-width: 600px) { .article-headline { font-size: 2rem; } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .article-body { animation: fadeUp 0.6s ease both; }
+  </style>
+</head>
+<body>
+  <div class="masthead">Global macroeconomic analysis &amp; commentary &nbsp;·&nbsp; Basis Point</div>
+  <header>
+    <div class="header-inner">
+      <div class="header-top">
+        <a href="index.html" class="logo">Basis Point<span>.</span></a>
+        <div style="font-family:var(--sans);font-size:0.72rem;color:var(--ink-light);">Monday, 29 December 2025</div>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="#">Macro</a>
+        <a href="#">Europe</a>
+        <a href="#">Tech &amp; Innovation</a>
+        <a href="#">Emerging Markets</a>
+        <a href="#">Data</a>
+        <a href="#" class="active">Commodities</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="article-wrapper">
+    <article class="article-body">
+      <div class="article-kicker">Commodities · Energy</div>
+      <h1 class="article-headline">Oil's New Ceiling: Why $90 Feels Distant Again</h1>
+      <p class="article-standfirst">Demand from China remains soft, non-OPEC+ supply is surging, and the energy transition is — at last — starting to bite. For oil markets, the question is shifting from geopolitical risk premium to structural surplus.</p>
+      <div class="article-meta">
+        <span class="author">By The Editors</span>
+        <span class="dot">·</span>
+        <span>29 December 2025</span>
+        <span class="dot">·</span>
+        <span>9 min read</span>
+        <span class="dot">·</span>
+        <span style="color:var(--amber)">Commodities</span>
+      </div>
+
+      <!-- Hero: Brent crude price history -->
+      <div class="article-hero-visual">
+        <div class="visual-label">Brent Crude Oil Price — USD per Barrel, 2020–2025</div>
+        <svg class="line-svg-dark" viewBox="0 0 600 140" xmlns="http://www.w3.org/2000/svg">
+          <line x1="60" y1="10" x2="580" y2="10" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+          <line x1="60" y1="40" x2="580" y2="40" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+          <line x1="60" y1="70" x2="580" y2="70" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+          <line x1="60" y1="100" x2="580" y2="100" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+          <text x="50" y="13" text-anchor="end" font-family="DM Sans" font-size="9" fill="rgba(250,247,242,0.4)">$130</text>
+          <text x="50" y="43" text-anchor="end" font-family="DM Sans" font-size="9" fill="rgba(250,247,242,0.4)">$100</text>
+          <text x="50" y="73" text-anchor="end" font-family="DM Sans" font-size="9" fill="rgba(250,247,242,0.4)">$75</text>
+          <text x="50" y="103" text-anchor="end" font-family="DM Sans" font-size="9" fill="rgba(250,247,242,0.4)">$50</text>
+          <!-- Price line -->
+          <polyline points="80,115 130,50 180,42 220,58 260,25 300,38 330,55 360,50 400,62 440,68 490,72 540,75 580,78"
+            fill="none" stroke="#c8832a" stroke-width="2.5" stroke-linejoin="round"/>
+          <!-- Area under line -->
+          <polygon points="80,115 130,50 180,42 220,58 260,25 300,38 330,55 360,50 400,62 440,68 490,72 540,75 580,78 580,130 80,130"
+            fill="rgba(200,131,42,0.1)"/>
+          <!-- X labels -->
+          <text x="80" y="128" text-anchor="middle" font-family="DM Sans" font-size="9" fill="rgba(250,247,242,0.4)">2020</text>
+          <text x="180" y="128" text-anchor="middle" font-family="DM Sans" font-size="9" fill="rgba(250,247,242,0.4)">2021</text>
+          <text x="280" y="128" text-anchor="middle" font-family="DM Sans" font-size="9" fill="rgba(250,247,242,0.4)">2022</text>
+          <text x="380" y="128" text-anchor="middle" font-family="DM Sans" font-size="9" fill="rgba(250,247,242,0.4)">2023</text>
+          <text x="480" y="128" text-anchor="middle" font-family="DM Sans" font-size="9" fill="rgba(250,247,242,0.4)">2024</text>
+          <text x="560" y="128" text-anchor="middle" font-family="DM Sans" font-size="9" fill="rgba(250,247,242,0.4)">2025</text>
+          <!-- Annotation -->
+          <text x="265" y="20" font-family="DM Sans" font-size="8" fill="rgba(200,131,42,0.8)">Russia invasion peak</text>
+          <line x1="275" y1="22" x2="265" y2="28" stroke="rgba(200,131,42,0.5)" stroke-width="1"/>
+        </svg>
+        <div class="chart-caption">Source: ICE Futures Europe. Monthly average Brent crude spot price. Illustrative representation.</div>
+      </div>
+
+      <div class="findings-box">
+        <div class="findings-title">Key Findings</div>
+        <ul class="findings-list">
+          <li>Brent crude has traded in the $70–80 range for most of 2025, well below the $90–100 levels many forecasters projected at the start of the year.</li>
+          <li>Non-OPEC+ production — led by the United States, Brazil, Guyana, and Canada — has grown faster than demand, putting downward pressure on prices even as OPEC+ has maintained production cuts.</li>
+          <li>China's oil demand growth has slowed markedly as electric vehicle adoption accelerates: EVs now account for roughly 40% of new passenger car sales in China.</li>
+          <li>For the first time in the history of oil markets, analysts at several major banks have modelled peak oil demand scenarios within the current decade.</li>
+        </ul>
+      </div>
+
+      <div class="prose">
+        <p>A year ago, the consensus view among oil market analysts was cautiously bullish: OPEC+ supply discipline would hold, Chinese demand would recover as the economy stabilised, and geopolitical risk from the Middle East would keep a floor under prices. Brent crude at $85–95 was the central case, with risks to the upside. The market had other ideas.</p>
+
+        <p>Brent spent most of 2025 trading between $70 and $80 per barrel — below the level at which several Gulf producers can balance their fiscal budgets, below the price assumed in many energy company investment models, and below the level that most energy transition advocates thought possible while global demand was still technically growing. Understanding why requires disentangling three separate forces, each of which would be significant on its own.</p>
+
+        <h2>The Supply Surge</h2>
+
+        <p>The first force is the extraordinary growth in non-OPEC+ production. The United States alone added roughly 1 million barrels per day of production between 2023 and 2025, driven by continued efficiency gains in the Permian Basin and other shale plays. Brazil's deepwater pre-salt fields have continued to ramp up. Guyana — a country that had essentially no oil industry a decade ago — is now producing over 600,000 barrels per day and is on track to double that by 2027. Canada's oil sands, despite their high cost and carbon intensity, continue to produce at record levels following the completion of the Trans Mountain pipeline expansion.</p>
+
+        <table class="data-table">
+          <thead>
+            <tr><th>Producer</th><th>Output 2022 (mbd)</th><th>Output 2025E (mbd)</th><th>Change</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>United States</strong></td><td class="num">12.0</td><td class="num">13.5</td><td class="up">+1.5mbd</td></tr>
+            <tr><td>Brazil</td><td class="num">3.0</td><td class="num">3.7</td><td class="up">+0.7mbd</td></tr>
+            <tr><td>Guyana</td><td class="num">0.1</td><td class="num">0.6</td><td class="up">+0.5mbd</td></tr>
+            <tr><td>Canada</td><td class="num">4.8</td><td class="num">5.4</td><td class="up">+0.6mbd</td></tr>
+            <tr><td>Saudi Arabia (OPEC+)</td><td class="num">10.5</td><td class="num">9.0</td><td class="down">−1.5mbd</td></tr>
+            <tr><td class="note" colspan="4">Source: IEA Oil Market Report; EIA. 2025 figures are estimates. mbd = million barrels per day.</td></tr>
+          </tbody>
+        </table>
+
+        <p>OPEC+ has attempted to offset this supply growth with production cuts, and the cartel's discipline has been better than in previous cycles. Saudi Arabia has borne a disproportionate share of the cuts, voluntarily reducing output to around 9 million barrels per day. But the cuts have not been enough to prevent the market from returning to a state of comfortable supply, and Saudi Arabia's patience — and its fiscal position, given its budget requires roughly $80–85 oil to balance — is being tested.</p>
+
+        <div class="pull-quote">"OPEC+ is fighting a structural battle with a cyclical weapon. Production cuts can manage price fluctuations; they cannot reverse a fundamental shift in the supply-demand balance."</div>
+
+        <h2>The China Demand Revision</h2>
+
+        <p>The second force is the revision of Chinese oil demand expectations. For two decades, China was the engine of global oil demand growth — its industrialisation, motorisation, and infrastructure build-out absorbed an ever-increasing share of global supply. That story is not over, but it is materially changing.</p>
+
+        <p>Electric vehicle adoption in China has moved faster than almost any analyst predicted. EVs accounted for roughly 40% of new passenger car sales in 2024, up from around 6% in 2020. The fleet penetration of EVs is still low — most of China's 350 million vehicles are still petrol-powered — but the trend is clear, and it is beginning to show up in fuel demand data. Chinese gasoline demand appears to have peaked or be close to peaking. Diesel demand, linked to construction and freight, remains weak due to the ongoing property sector downturn.</p>
+
+        <h2>The Energy Transition Signal</h2>
+
+        <p>The third force is the most structurally significant: the energy transition is, for the first time, generating a discernible signal in global oil demand data. Global oil demand growth has slowed materially from its pre-pandemic trajectory, and for the first time, serious analysts at institutions including the IEA are modelling scenarios in which global oil demand peaks before 2030.</p>
+
+        <div class="line-chart-wrap">
+          <div class="chart-title">Global Oil Demand Growth, Annual Increment (million barrels/day)</div>
+          <div class="chart-subtitle">2015–2025. Positive = year-on-year increase in demand.</div>
+          <svg class="line-svg" viewBox="0 0 600 130" xmlns="http://www.w3.org/2000/svg">
+            <line x1="60" y1="20" x2="580" y2="20" stroke="#d4c9b8" stroke-width="0.5"/>
+            <line x1="60" y1="55" x2="580" y2="55" stroke="#d4c9b8" stroke-width="0.5"/>
+            <line x1="60" y1="75" x2="580" y2="75" stroke="#d4c9b8" stroke-width="1" stroke-dasharray="4 2"/>
+            <line x1="60" y1="100" x2="580" y2="100" stroke="#d4c9b8" stroke-width="0.5"/>
+            <text x="50" y="23" text-anchor="end" font-family="DM Sans" font-size="9" fill="#8a7a6a">+3.0</text>
+            <text x="50" y="58" text-anchor="end" font-family="DM Sans" font-size="9" fill="#8a7a6a">+1.5</text>
+            <text x="50" y="78" text-anchor="end" font-family="DM Sans" font-size="9" fill="#c8832a">0</text>
+            <text x="50" y="103" text-anchor="end" font-family="DM Sans" font-size="9" fill="#8a7a6a">−1.5</text>
+            <!-- Bars -->
+            <rect x="75" y="42" width="28" height="33" fill="rgba(42,122,64,0.7)" rx="1"/>
+            <rect x="130" y="38" width="28" height="37" fill="rgba(42,122,64,0.7)" rx="1"/>
+            <rect x="185" y="45" width="28" height="30" fill="rgba(42,122,64,0.7)" rx="1"/>
+            <rect x="240" y="108" width="28" height="0" rx="1"/>
+            <rect x="240" y="75" width="28" height="33" fill="rgba(138,42,42,0.7)" rx="1"/>
+            <rect x="295" y="20" width="28" height="55" fill="rgba(42,122,64,0.7)" rx="1"/>
+            <rect x="350" y="50" width="28" height="25" fill="rgba(42,122,64,0.7)" rx="1"/>
+            <rect x="405" y="58" width="28" height="17" fill="rgba(42,122,64,0.7)" rx="1"/>
+            <rect x="460" y="62" width="28" height="13" fill="rgba(42,122,64,0.7)" rx="1"/>
+            <rect x="515" y="66" width="28" height="9" fill="rgba(200,131,42,0.7)" rx="1"/>
+            <!-- X labels -->
+            <text x="89" y="120" text-anchor="middle" font-family="DM Sans" font-size="8" fill="#8a7a6a">2015</text>
+            <text x="144" y="120" text-anchor="middle" font-family="DM Sans" font-size="8" fill="#8a7a6a">2016</text>
+            <text x="199" y="120" text-anchor="middle" font-family="DM Sans" font-size="8" fill="#8a7a6a">2019</text>
+            <text x="254" y="120" text-anchor="middle" font-family="DM Sans" font-size="8" fill="#8a7a6a">2020</text>
+            <text x="309" y="120" text-anchor="middle" font-family="DM Sans" font-size="8" fill="#8a7a6a">2021</text>
+            <text x="364" y="120" text-anchor="middle" font-family="DM Sans" font-size="8" fill="#8a7a6a">2022</text>
+            <text x="419" y="120" text-anchor="middle" font-family="DM Sans" font-size="8" fill="#8a7a6a">2023</text>
+            <text x="474" y="120" text-anchor="middle" font-family="DM Sans" font-size="8" fill="#8a7a6a">2024</text>
+            <text x="529" y="120" text-anchor="middle" font-family="DM Sans" font-size="8" fill="#c8832a">2025E</text>
+          </svg>
+        </div>
+
+        <p>This does not mean oil demand is falling — it is not, at least not yet on a global basis. It means that demand growth is slowing, and that the long period during which oil demand reliably grew by 1–2 million barrels per day every year may be drawing to a close. For oil producers, investors, and the petrostates whose fiscal positions depend on high prices, this is a fundamental shift in the long-run outlook.</p>
+
+        <div class="method-box">
+          <div class="method-box-title">A Note on Data &amp; Methodology</div>
+          <p>Oil price data is sourced from ICE Futures Europe (Brent crude spot). Production and demand data is drawn from the International Energy Agency (IEA) Oil Market Report and the US Energy Information Administration (EIA). All 2025 production figures are estimates. EV sales penetration figures are sourced from BloombergNEF Electric Vehicle Outlook 2025.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid var(--rule);">
+        <div style="font-family:var(--sans);font-size:0.65rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-light);margin-bottom:0.7rem;">Topics</div>
+        <div class="tags">
+          <span class="tag">Oil Markets</span><span class="tag">OPEC+</span><span class="tag">Energy Transition</span><span class="tag">Commodities</span><span class="tag">China</span><span class="tag">Electric Vehicles</span><span class="tag">Climate</span>
+        </div>
+      </div>
+    </article>
+
+    <aside class="article-sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-label">Key Statistics</div>
+        <div class="sidebar-stat"><div class="sidebar-stat-number">$72</div><div class="sidebar-stat-label">Brent crude average price, Q3 2025 — well below budget breakevens</div></div>
+        <div class="sidebar-stat"><div class="sidebar-stat-number">40%</div><div class="sidebar-stat-label">EV share of new car sales in China, 2024</div></div>
+        <div class="sidebar-stat"><div class="sidebar-stat-number">13.5mbd</div><div class="sidebar-stat-label">Estimated US oil production, 2025 — a record high</div></div>
+        <div class="sidebar-stat"><div class="sidebar-stat-number">~$82</div><div class="sidebar-stat-label">Saudi Arabia's estimated fiscal breakeven oil price</div></div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-label">Related Reading</div>
+        <div class="related-article"><div class="related-kicker">Asia Pacific</div><div class="related-headline">China's Stimulus Dilemma: Big Bang or Steady Drip?</div></div>
+        <div class="related-article"><div class="related-kicker">Climate Economics</div><div class="related-headline">The Climate Finance Gap: $2.4 Trillion Short Every Year</div></div>
+        <div class="related-article"><div class="related-kicker">Emerging Markets</div><div class="related-headline">Africa's Debt Reckoning: What Comes After the IMF</div></div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-label">Data Sources</div>
+        <div style="font-family:var(--sans);font-size:0.78rem;font-weight:300;color:var(--ink-light);line-height:1.7;">
+          <p>· IEA Oil Market Report</p>
+          <p>· US Energy Information Administration</p>
+          <p>· ICE Futures Europe</p>
+          <p>· BloombergNEF EV Outlook</p>
+          <p>· OPEC Monthly Oil Market Report</p>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <a href="index.html" class="footer-logo">Basis Point<span>.</span></a>
+      <div style="font-family:var(--sans);font-size:0.75rem;font-weight:300;color:rgba(250,247,242,0.5);">Independent analysis of global macroeconomic trends</div>
+    </div>
+    <div class="footer-copy">© 2026 Basis Point. All rights reserved. Analysis is for informational purposes only and does not constitute investment advice.</div>
+  </footer>
+</body>
+</html>

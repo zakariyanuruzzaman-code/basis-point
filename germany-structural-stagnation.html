@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Germany's Growth Problem Is Structural, Not Cyclical — Basis Point</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400;1,600&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #1a1510; --ink-light: #4a4035; --cream: #faf7f2; --cream-dark: #f0ebe0;
+      --amber: #c8832a; --amber-light: #e8a84a; --rule: #d4c9b8;
+      --serif: 'Playfair Display', Georgia, serif;
+      --body: 'Source Serif 4', Georgia, serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+    body { background: var(--cream); color: var(--ink); font-family: var(--body); font-size: 18px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    .masthead { background: var(--ink); color: var(--amber-light); text-align: center; padding: 0.35rem 1rem; font-family: var(--sans); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; }
+    header { border-bottom: 3px solid var(--ink); background: var(--cream); position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    .header-top { display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 0 0.8rem; border-bottom: 1px solid var(--rule); }
+    .logo { font-family: var(--serif); font-size: 2rem; font-weight: 800; color: var(--ink); text-decoration: none; }
+    .logo span { color: var(--amber); }
+    nav { display: flex; gap: 0; padding: 0.5rem 0; }
+    nav a { font-family: var(--sans); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); text-decoration: none; padding: 0.3rem 1rem 0.3rem 0; margin-right: 0.5rem; border-right: 1px solid var(--rule); transition: color 0.2s; }
+    nav a:last-child { border-right: none; }
+    nav a:hover, nav a.active { color: var(--amber); }
+    .article-wrapper { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem; display: grid; grid-template-columns: 680px 1fr; gap: 4rem; align-items: start; }
+    .article-kicker { font-family: var(--sans); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--amber); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+    .article-kicker::before { content: ''; display: inline-block; width: 20px; height: 2px; background: var(--amber); }
+    .article-headline { font-family: var(--serif); font-size: 2.8rem; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 1rem; }
+    .article-standfirst { font-family: var(--body); font-size: 1.15rem; font-weight: 400; font-style: italic; color: var(--ink-light); line-height: 1.55; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule); }
+    .article-meta { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; font-family: var(--sans); font-size: 0.75rem; color: var(--ink-light); }
+    .article-meta .author { font-weight: 600; color: var(--ink); }
+    .article-meta .dot { color: var(--rule); }
+    .article-hero-visual { width: 100%; border-radius: 3px; margin-bottom: 2rem; background: linear-gradient(135deg, #1a2030 0%, #2a3a5c 50%, #1a2a3a 100%); padding: 2.5rem; position: relative; overflow: hidden; }
+    .article-hero-visual::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E"); }
+    .visual-label { font-family: var(--sans); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber-light); margin-bottom: 1.2rem; }
+    .bar-chart { display: flex; flex-direction: column; gap: 0.7rem; }
+    .bar-row { display: flex; align-items: center; gap: 0.8rem; }
+    .bar-label { font-family: var(--sans); font-size: 0.7rem; font-weight: 500; color: rgba(250,247,242,0.8); width: 90px; flex-shrink: 0; }
+    .bar-track { flex: 1; height: 22px; background: rgba(255,255,255,0.07); border-radius: 2px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 2px; animation: barGrow 1s ease both; transform-origin: left; }
+    @keyframes barGrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+    .bar-value { font-family: var(--sans); font-size: 0.72rem; font-weight: 600; color: rgba(250,247,242,0.9); width: 55px; flex-shrink: 0; text-align: right; }
+    .chart-caption { font-family: var(--sans); font-size: 0.65rem; color: rgba(250,247,242,0.4); margin-top: 1rem; font-style: italic; }
+    .prose p { margin-bottom: 1.4rem; color: var(--ink); }
+    .prose h2 { font-family: var(--serif); font-size: 1.6rem; font-weight: 700; line-height: 1.2; color: var(--ink); margin: 2.5rem 0 1rem; padding-top: 2rem; border-top: 1px solid var(--rule); }
+    .pull-quote { margin: 2.5rem 0; padding: 1.5rem 0 1.5rem 1.8rem; border-left: 3px solid var(--amber); font-family: var(--serif); font-size: 1.35rem; font-style: italic; line-height: 1.4; color: var(--ink); }
+    .data-table { width: 100%; border-collapse: collapse; margin: 2rem 0; font-family: var(--sans); font-size: 0.82rem; }
+    .data-table thead th { font-weight: 600; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); padding: 0.6rem 0.8rem; border-bottom: 2px solid var(--ink); text-align: left; }
+    .data-table tbody tr { border-bottom: 1px solid var(--rule); transition: background 0.15s; }
+    .data-table tbody tr:hover { background: var(--cream-dark); }
+    .data-table tbody td { padding: 0.7rem 0.8rem; color: var(--ink); }
+    .data-table .num { font-weight: 600; }
+    .data-table .up { color: #2a7a40; font-weight: 600; }
+    .data-table .down { color: #8a2a2a; font-weight: 600; }
+    .data-table .note { color: var(--ink-light); font-size: 0.75rem; }
+    .method-box { background: var(--cream-dark); border: 1px solid var(--rule); border-left: 3px solid var(--amber); padding: 1.5rem; margin: 2.5rem 0; border-radius: 2px; }
+    .method-box-title { font-family: var(--sans); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.6rem; }
+    .method-box p { font-size: 0.85rem; font-weight: 300; color: var(--ink-light); line-height: 1.6; margin-bottom: 0 !important; }
+    .findings-box { background: var(--ink); color: var(--cream); padding: 2rem; border-radius: 3px; margin: 2.5rem 0; }
+    .findings-title { font-family: var(--sans); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber-light); margin-bottom: 1.2rem; }
+    .findings-list { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; }
+    .findings-list li { font-size: 0.9rem; font-weight: 300; color: rgba(250,247,242,0.85); line-height: 1.5; display: flex; gap: 0.7rem; }
+    .findings-list li::before { content: '→'; color: var(--amber-light); font-weight: 600; flex-shrink: 0; }
+    .line-chart-wrap { margin: 2rem 0; background: var(--cream-dark); border: 1px solid var(--rule); border-radius: 3px; padding: 1.5rem; }
+    .chart-title { font-family: var(--sans); font-size: 0.75rem; font-weight: 600; color: var(--ink); margin-bottom: 0.3rem; }
+    .chart-subtitle { font-family: var(--sans); font-size: 0.68rem; font-weight: 300; color: var(--ink-light); margin-bottom: 1rem; }
+    .line-svg { width: 100%; height: 130px; }
+    .article-sidebar { position: sticky; top: 100px; }
+    .sidebar-section { margin-bottom: 2.5rem; padding-bottom: 2.5rem; border-bottom: 1px solid var(--rule); }
+    .sidebar-section:last-child { border-bottom: none; }
+    .sidebar-label { font-family: var(--sans); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); margin-bottom: 1rem; }
+    .sidebar-stat { margin-bottom: 1.2rem; }
+    .sidebar-stat-number { font-family: var(--serif); font-size: 2rem; font-weight: 800; color: var(--ink); line-height: 1; margin-bottom: 0.2rem; }
+    .sidebar-stat-label { font-family: var(--sans); font-size: 0.72rem; font-weight: 300; color: var(--ink-light); line-height: 1.4; }
+    .related-article { margin-bottom: 1.2rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--rule); }
+    .related-article:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .related-kicker { font-family: var(--sans); font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.3rem; }
+    .related-headline { font-family: var(--serif); font-size: 0.95rem; font-weight: 600; line-height: 1.3; color: var(--ink); cursor: pointer; transition: color 0.2s; }
+    .related-headline:hover { color: var(--amber); }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tag { font-family: var(--sans); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-light); border: 1px solid var(--rule); padding: 0.3rem 0.7rem; border-radius: 20px; cursor: pointer; transition: all 0.2s; }
+    .tag:hover { border-color: var(--amber); color: var(--amber); }
+    footer { background: var(--ink); color: var(--cream); padding: 2.5rem 2rem 1.5rem; margin-top: 4rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 1rem; }
+    .footer-logo { font-family: var(--serif); font-size: 1.5rem; font-weight: 800; color: var(--cream); text-decoration: none; }
+    .footer-logo span { color: var(--amber); }
+    .footer-copy { max-width: 1100px; margin: 0 auto; font-family: var(--sans); font-size: 0.7rem; font-weight: 300; color: rgba(250,247,242,0.35); }
+    @media (max-width: 960px) { .article-wrapper { grid-template-columns: 1fr; gap: 2.5rem; } .article-sidebar { position: static; } }
+    @media (max-width: 600px) { .article-headline { font-size: 2rem; } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .article-body { animation: fadeUp 0.6s ease both; }
+  </style>
+</head>
+<body>
+  <div class="masthead">Global macroeconomic analysis &amp; commentary &nbsp;·&nbsp; Basis Point</div>
+  <header>
+    <div class="header-inner">
+      <div class="header-top">
+        <a href="index.html" class="logo">Basis Point<span>.</span></a>
+        <div style="font-family:var(--sans);font-size:0.72rem;color:var(--ink-light);">Monday, 23 February 2026</div>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="#">Macro</a>
+        <a href="#" class="active">Europe</a>
+        <a href="#">Tech &amp; Innovation</a>
+        <a href="#">Emerging Markets</a>
+        <a href="#">Data</a>
+        <a href="#">Opinion</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="article-wrapper">
+    <article class="article-body">
+      <div class="article-kicker">Europe · Structural Economics</div>
+      <h1 class="article-headline">Germany's Growth Problem Is Structural, Not Cyclical</h1>
+      <p class="article-standfirst">The eurozone's largest economy has posted near-zero growth for three consecutive years. The explanations offered — energy prices, weak Chinese demand, post-pandemic hangover — are real but insufficient. The deeper problem is one of model failure.</p>
+      <div class="article-meta">
+        <span class="author">By The Editors</span>
+        <span class="dot">·</span>
+        <span>23 February 2026</span>
+        <span class="dot">·</span>
+        <span>10 min read</span>
+        <span class="dot">·</span>
+        <span style="color:var(--amber)">Europe</span>
+      </div>
+
+      <!-- Hero chart: GDP growth comparison -->
+      <div class="article-hero-visual">
+        <div class="visual-label">Real GDP Growth, 2023–2025 Average (% per annum)</div>
+        <div class="bar-chart">
+          <div class="bar-row">
+            <span class="bar-label">United States</span>
+            <div class="bar-track"><div class="bar-fill" style="width:85%;background:linear-gradient(90deg,#2a8a5a,#4abf8a);animation-delay:0.1s"></div></div>
+            <span class="bar-value">+2.7%</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">Spain</span>
+            <div class="bar-track"><div class="bar-fill" style="width:68%;background:linear-gradient(90deg,#2a6a8a,#4a9abf);animation-delay:0.2s"></div></div>
+            <span class="bar-value">+2.2%</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">France</span>
+            <div class="bar-track"><div class="bar-fill" style="width:38%;background:linear-gradient(90deg,#6a5a2a,#bfa04a);animation-delay:0.3s"></div></div>
+            <span class="bar-value">+1.2%</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">Eurozone</span>
+            <div class="bar-track"><div class="bar-fill" style="width:28%;background:linear-gradient(90deg,#5a5a2a,#9a9a4a);animation-delay:0.4s"></div></div>
+            <span class="bar-value">+0.9%</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">Germany</span>
+            <div class="bar-track"><div class="bar-fill" style="width:6%;background:linear-gradient(90deg,#8a3a2a,#bf6a4a);animation-delay:0.5s"></div></div>
+            <span class="bar-value">+0.1%</span>
+          </div>
+        </div>
+        <div class="chart-caption">Source: IMF World Economic Outlook (October 2025). Figures are averages across the three-year period.</div>
+      </div>
+
+      <div class="findings-box">
+        <div class="findings-title">Key Findings</div>
+        <ul class="findings-list">
+          <li>Germany's economy contracted in both 2023 and 2024, marking its longest period of stagnation since reunification in the early 1990s.</li>
+          <li>Industrial output — the engine of the German model — has fallen by over 15% from its 2017 peak, with automotive and chemicals hit hardest.</li>
+          <li>The energy cost shock from Russia's invasion of Ukraine exposed a fundamental vulnerability: Germany's competitiveness was partly built on cheap Russian gas.</li>
+          <li>Structural issues — ageing infrastructure, chronic underinvestment, rigid labour markets, and a digitalisation deficit — predate the energy crisis and will outlast it.</li>
+        </ul>
+      </div>
+
+      <div class="prose">
+        <p>For most of the post-war era, Germany was the economic envy of Europe. Its export-led model — world-class engineering firms, tight labour-management relations, a globally respected currency, and an innate cultural preference for fiscal discipline — produced decades of steady prosperity. It survived reunification, the dotcom bust, and the 2008 financial crisis with its reputation largely intact. The eurozone sovereign debt crisis made Germany look stronger by contrast.</p>
+
+        <p>That model is now in serious trouble. Not because of a bad quarter or an unlucky set of external shocks — though there have been plenty of those — but because the three pillars on which it rested have simultaneously weakened. Cheap Russian energy is gone. The Chinese export market is shrinking and becoming a source of direct competition rather than demand. And the internal combustion engine, around which Germany built one of the most sophisticated manufacturing clusters in the world, is being phased out.</p>
+
+        <h2>The Energy Reckoning</h2>
+
+        <p>Germany's industrial competitiveness was, for decades, quietly subsidised by cheap natural gas imported from Russia. Energy-intensive industries — chemicals, steel, glass, paper — could operate in Germany at costs that would have been unviable elsewhere in the rich world. When Russia invaded Ukraine in February 2022 and the subsequent sanctions regime effectively ended that supply relationship, German industry lost a structural advantage that had taken generations to build.</p>
+
+        <p>Gas prices in Europe spiked to roughly ten times their pre-war levels at peak. Even after the acute crisis passed, they settled at two to three times their historical average. For energy-intensive sectors, this is not a temporary headwind — it is a permanent repricing of their operating environment. BASF, the chemical giant and one of Germany's most iconic companies, announced plans to permanently downsize its German operations and shift production capacity to the United States and China, where energy costs remain lower.</p>
+
+        <div class="pull-quote">"Germany did not simply suffer an external shock. It discovered that its competitive model had been resting on foundations that no longer exist."</div>
+
+        <p>The political response has been muddled. The coalition government that took power in 2021 broke apart in late 2024, partly over disagreements about how aggressively to use public investment to compensate for the structural shifts underway. The constitutional debt brake — Germany's self-imposed limit on government borrowing — has become a genuine economic constraint at precisely the moment when large-scale public investment might be warranted.</p>
+
+        <h2>The China Problem</h2>
+
+        <p>If energy was Germany's first structural vulnerability, China is its second. For two decades, German exporters — particularly in automotive, machinery, and luxury goods — rode China's extraordinary growth story. The German car industry in particular came to depend on China for roughly a third of its global sales volume.</p>
+
+        <table class="data-table">
+          <thead>
+            <tr><th>Sector</th><th>China Share of Exports, 2015</th><th>China Share of Exports, 2024</th><th>Change</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Automotive</strong></td><td class="num">32%</td><td class="num">24%</td><td class="down">−8pp</td></tr>
+            <tr><td>Machinery</td><td class="num">18%</td><td class="num">15%</td><td class="down">−3pp</td></tr>
+            <tr><td>Chemicals</td><td class="num">14%</td><td class="num">11%</td><td class="down">−3pp</td></tr>
+            <tr><td>Electronics</td><td class="num">22%</td><td class="num">18%</td><td class="down">−4pp</td></tr>
+            <tr><td class="note" colspan="4">Source: Federal Statistical Office (Destatis), Bundesbank. Estimates for 2024.</td></tr>
+          </tbody>
+        </table>
+
+        <p>That dependence is unwinding for two related reasons. First, Chinese domestic demand has been weaker than expected since the end of the zero-Covid policy, dampened by the ongoing property sector crisis and cautious consumer spending. Second, and more consequentially, Chinese manufacturers — particularly in electric vehicles — have moved from being customers to being competitors. BYD, SAIC, and Geely are now selling vehicles in European markets that directly compete with Volkswagen, BMW, and Mercedes.</p>
+
+        <p>The German automotive industry's transition to electric vehicles has been slower and more painful than that of its peers. Volkswagen — which employs roughly 120,000 people in Germany alone — announced plans in late 2024 to close domestic plants for the first time in the company's history, a decision that triggered the largest round of industrial disputes in Germany in a generation.</p>
+
+        <h2>The Digitalisation Deficit</h2>
+
+        <p>Germany's structural weaknesses are not limited to energy and automotive. The country ranks poorly on most measures of digital infrastructure and adoption relative to its GDP per capita. Broadband coverage in rural areas lags behind not just Scandinavia but many Eastern European economies. Public services are notoriously paper-heavy. Business formation rates in digital and tech sectors are low compared to the United Kingdom, France, or the Netherlands.</p>
+
+        <div class="line-chart-wrap">
+          <div class="chart-title">Germany vs OECD Average: Digital Economy Indicators, 2024</div>
+          <div class="chart-subtitle">Index: OECD average = 100. Higher = better performance.</div>
+          <svg class="line-svg" viewBox="0 0 600 130" xmlns="http://www.w3.org/2000/svg">
+            <line x1="60" y1="10" x2="580" y2="10" stroke="#d4c9b8" stroke-width="0.5"/>
+            <line x1="60" y1="45" x2="580" y2="45" stroke="#d4c9b8" stroke-width="0.5"/>
+            <line x1="60" y1="75" x2="580" y2="75" stroke="#d4c9b8" stroke-width="0.5" stroke-dasharray="4 2"/>
+            <line x1="60" y1="105" x2="580" y2="105" stroke="#d4c9b8" stroke-width="0.5"/>
+            <text x="50" y="13" text-anchor="end" font-family="DM Sans" font-size="9" fill="#8a7a6a">140</text>
+            <text x="50" y="48" text-anchor="end" font-family="DM Sans" font-size="9" fill="#8a7a6a">100</text>
+            <text x="50" y="78" text-anchor="end" font-family="DM Sans" font-size="9" fill="#c8832a">75</text>
+            <text x="50" y="108" text-anchor="end" font-family="DM Sans" font-size="9" fill="#8a7a6a">60</text>
+            <!-- OECD average line -->
+            <line x1="60" y1="45" x2="580" y2="45" stroke="#1a1510" stroke-width="1.5" stroke-dasharray="6 3"/>
+            <!-- Germany bars -->
+            <rect x="90" y="58" width="40" height="47" fill="rgba(200,131,42,0.7)" rx="2"/>
+            <rect x="210" y="70" width="40" height="35" fill="rgba(200,131,42,0.7)" rx="2"/>
+            <rect x="330" y="55" width="40" height="50" fill="rgba(200,131,42,0.7)" rx="2"/>
+            <rect x="450" y="62" width="40" height="43" fill="rgba(200,131,42,0.7)" rx="2"/>
+            <!-- Labels -->
+            <text x="110" y="120" text-anchor="middle" font-family="DM Sans" font-size="8" fill="#4a4035">Broadband</text>
+            <text x="230" y="120" text-anchor="middle" font-family="DM Sans" font-size="8" fill="#4a4035">Digital Gov't</text>
+            <text x="350" y="120" text-anchor="middle" font-family="DM Sans" font-size="8" fill="#4a4035">Tech Startups</text>
+            <text x="470" y="120" text-anchor="middle" font-family="DM Sans" font-size="8" fill="#4a4035">E-commerce</text>
+            <text x="400" y="42" font-family="DM Sans" font-size="8" fill="#4a4035">── OECD Average</text>
+          </svg>
+        </div>
+
+        <p>This is not a new observation. Germany's digitalisation deficit has been documented by the European Commission, the Bundesbank, and the OECD for the better part of a decade. The difference now is that it matters more. In a world where economic competitiveness increasingly depends on software, data, and platform businesses, Germany's strengths in precision engineering and industrial organisation are less decisive advantages than they once were.</p>
+
+        <h2>Is There a Way Out?</h2>
+
+        <p>The pessimistic reading is that Germany's model is broken and that the adjustments required — deep investment in digital infrastructure, a rapid energy transition, a restructuring of the automotive industry, and a relaxation of fiscal constraints — are politically difficult to the point of near-impossibility. German voters and politicians across the mainstream are deeply attached to balanced budgets and industrial employment. The institutions that made the old model work are resistant to the changes that a new model would require.</p>
+
+        <p>The more optimistic reading notes that Germany has successfully reinvented itself before. After reunification, a decade of stagnation in the late 1990s and early 2000s was followed by the Hartz labour market reforms, which — controversially — made the economy more flexible and laid the groundwork for the export-led growth of the 2010s. German engineering excellence and its dense ecosystem of Mittelstand companies — mid-sized, often family-owned specialists — remain genuine strengths that could be redeployed in new industries such as hydrogen, industrial automation, and defence technology.</p>
+
+        <p>What is clear is that the current trajectory is not sustainable. An economy of Germany's size and sophistication running at near-zero growth is not just a German problem — it is a eurozone problem, and increasingly a global one. Germany is the largest economy in Europe, the fourth-largest in the world, and the cornerstone of the European single market. Its prolonged weakness ripples outward through supply chains, trade flows, and political confidence in the European project itself.</p>
+
+        <div class="method-box">
+          <div class="method-box-title">A Note on Data &amp; Methodology</div>
+          <p>GDP growth figures are sourced from the IMF World Economic Outlook database (October 2025 edition). Export data is drawn from Germany's Federal Statistical Office (Destatis) and the Bundesbank's trade statistics. Digital economy indices are derived from OECD Digital Economy Outlook 2024. All figures should be treated as estimates subject to revision.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid var(--rule);">
+        <div style="font-family:var(--sans);font-size:0.65rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-light);margin-bottom:0.7rem;">Topics</div>
+        <div class="tags">
+          <span class="tag">Germany</span>
+          <span class="tag">Europe</span>
+          <span class="tag">Industrial Policy</span>
+          <span class="tag">Automotive</span>
+          <span class="tag">Energy Transition</span>
+          <span class="tag">Structural Economics</span>
+          <span class="tag">Trade</span>
+        </div>
+      </div>
+    </article>
+
+    <aside class="article-sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-label">Key Statistics</div>
+        <div class="sidebar-stat"><div class="sidebar-stat-number">−15%</div><div class="sidebar-stat-label">Fall in German industrial output from its 2017 peak</div></div>
+        <div class="sidebar-stat"><div class="sidebar-stat-number">3yrs</div><div class="sidebar-stat-label">Consecutive years of near-zero GDP growth</div></div>
+        <div class="sidebar-stat"><div class="sidebar-stat-number">120k</div><div class="sidebar-stat-label">Volkswagen employees in Germany alone</div></div>
+        <div class="sidebar-stat"><div class="sidebar-stat-number">−8pp</div><div class="sidebar-stat-label">Drop in automotive sector's China export share since 2015</div></div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-label">Related Reading</div>
+        <div class="related-article"><div class="related-kicker">Monetary Policy</div><div class="related-headline">The ECB's Difficult Balancing Act Between Inflation and Stagnation</div></div>
+        <div class="related-article"><div class="related-kicker">Trade</div><div class="related-headline">How the New Industrial Policy Is Redrawing Supply Chains</div></div>
+        <div class="related-article"><div class="related-kicker">Asia Pacific</div><div class="related-headline">China's Stimulus Dilemma: Big Bang or Steady Drip?</div></div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-label">Data Sources</div>
+        <div style="font-family:var(--sans);font-size:0.78rem;font-weight:300;color:var(--ink-light);line-height:1.7;">
+          <p>· IMF World Economic Outlook</p>
+          <p>· Federal Statistical Office (Destatis)</p>
+          <p>· Deutsche Bundesbank</p>
+          <p>· OECD Digital Economy Outlook</p>
+          <p>· European Commission</p>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <a href="index.html" class="footer-logo">Basis Point<span>.</span></a>
+      <div style="font-family:var(--sans);font-size:0.75rem;font-weight:300;color:rgba(250,247,242,0.5);">Independent analysis of global macroeconomic trends</div>
+    </div>
+    <div class="footer-copy">© 2026 Basis Point. All rights reserved. Analysis is for informational purposes only and does not constitute investment advice.</div>
+  </footer>
+</body>
+</html>

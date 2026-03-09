@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Quiet Unravelling of the Global Rate Cycle — Basis Point</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400;1,600&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --ink: #1a1510; --ink-light: #4a4035; --cream: #faf7f2; --cream-dark: #f0ebe0; --amber: #c8832a; --amber-light: #e8a84a; --rule: #d4c9b8; --serif: 'Playfair Display', Georgia, serif; --body: 'Source Serif 4', Georgia, serif; --sans: 'DM Sans', sans-serif; }
+    body { background: var(--cream); color: var(--ink); font-family: var(--body); font-size: 18px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    .masthead { background: var(--ink); color: var(--amber-light); text-align: center; padding: 0.35rem 1rem; font-family: var(--sans); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; }
+    header { border-bottom: 3px solid var(--ink); background: var(--cream); position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    .header-top { display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 0 0.8rem; border-bottom: 1px solid var(--rule); }
+    .logo { font-family: var(--serif); font-size: 2rem; font-weight: 800; color: var(--ink); text-decoration: none; }
+    .logo span { color: var(--amber); }
+    nav { display: flex; gap: 0; padding: 0.5rem 0; }
+    nav a { font-family: var(--sans); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); text-decoration: none; padding: 0.3rem 1rem 0.3rem 0; margin-right: 0.5rem; border-right: 1px solid var(--rule); transition: color 0.2s; }
+    nav a:last-child { border-right: none; }
+    nav a:hover, nav a.active { color: var(--amber); }
+    .article-wrapper { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem; display: grid; grid-template-columns: 680px 1fr; gap: 4rem; align-items: start; }
+    .article-kicker { font-family: var(--sans); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--amber); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+    .article-kicker::before { content: ''; display: inline-block; width: 20px; height: 2px; background: var(--amber); }
+    .article-headline { font-family: var(--serif); font-size: 2.8rem; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 1rem; }
+    .article-standfirst { font-family: var(--body); font-size: 1.15rem; font-weight: 400; font-style: italic; color: var(--ink-light); line-height: 1.55; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule); }
+    .article-meta { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; font-family: var(--sans); font-size: 0.75rem; color: var(--ink-light); }
+    .article-meta .author { font-weight: 600; color: var(--ink); }
+    .article-meta .dot { color: var(--rule); }
+    .article-hero-visual { width: 100%; border-radius: 3px; margin-bottom: 2rem; background: linear-gradient(135deg, #0f1a1f 0%, #1a3040 60%, #1a2010 100%); padding: 2.5rem; position: relative; overflow: hidden; }
+    .article-hero-visual::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.025'%3E%3Cpath d='M54 0h6v60H0v-6h54V0z'/%3E%3C/g%3E%3C/svg%3E"); }
+    .visual-label { font-family: var(--sans); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber-light); margin-bottom: 1.5rem; }
+    .rate-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .rate-card { background: rgba(255,255,255,0.06); border-radius: 4px; padding: 1rem 1.2rem; border-left: 2px solid; }
+    .rate-card-label { font-family: var(--sans); font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(250,247,242,0.5); margin-bottom: 0.4rem; }
+    .rate-card-value { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 800; color: rgba(250,247,242,0.95); line-height: 1; margin-bottom: 0.2rem; }
+    .rate-card-change { font-family: var(--sans); font-size: 0.68rem; color: rgba(250,247,242,0.55); }
+    .chart-caption { font-family: var(--sans); font-size: 0.65rem; color: rgba(250,247,242,0.35); margin-top: 1.2rem; font-style: italic; }
+    .prose p { margin-bottom: 1.4rem; color: var(--ink); }
+    .prose h2 { font-family: var(--serif); font-size: 1.6rem; font-weight: 700; line-height: 1.2; color: var(--ink); margin: 2.5rem 0 1rem; padding-top: 2rem; border-top: 1px solid var(--rule); }
+    .pull-quote { margin: 2.5rem 0; padding: 1.5rem 0 1.5rem 1.8rem; border-left: 3px solid var(--amber); font-family: var(--serif); font-size: 1.35rem; font-style: italic; line-height: 1.4; color: var(--ink); }
+    .data-table { width: 100%; border-collapse: collapse; margin: 2rem 0; font-family: var(--sans); font-size: 0.82rem; }
+    .data-table thead th { font-weight: 600; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); padding: 0.6rem 0.8rem; border-bottom: 2px solid var(--ink); text-align: left; }
+    .data-table tbody tr { border-bottom: 1px solid var(--rule); transition: background 0.15s; }
+    .data-table tbody tr:hover { background: var(--cream-dark); }
+    .data-table tbody td { padding: 0.7rem 0.8rem; color: var(--ink); }
+    .data-table .num { font-weight: 600; }
+    .data-table .up { color: #2a7a40; font-weight: 600; }
+    .data-table .down { color: #8a2a2a; font-weight: 600; }
+    .data-table .note { color: var(--ink-light); font-size: 0.75rem; }
+    .method-box { background: var(--cream-dark); border: 1px solid var(--rule); border-left: 3px solid var(--amber); padding: 1.5rem; margin: 2.5rem 0; border-radius: 2px; }
+    .method-box-title { font-family: var(--sans); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.6rem; }
+    .method-box p { font-size: 0.85rem; font-weight: 300; color: var(--ink-light); line-height: 1.6; margin-bottom: 0 !important; }
+    .findings-box { background: var(--ink); color: var(--cream); padding: 2rem; border-radius: 3px; margin: 2.5rem 0; }
+    .findings-title { font-family: var(--sans); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber-light); margin-bottom: 1.2rem; }
+    .findings-list { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; }
+    .findings-list li { font-size: 0.9rem; font-weight: 300; color: rgba(250,247,242,0.85); line-height: 1.5; display: flex; gap: 0.7rem; }
+    .findings-list li::before { content: '→'; color: var(--amber-light); font-weight: 600; flex-shrink: 0; }
+    .article-sidebar { position: sticky; top: 100px; }
+    .sidebar-section { margin-bottom: 2.5rem; padding-bottom: 2.5rem; border-bottom: 1px solid var(--rule); }
+    .sidebar-section:last-child { border-bottom: none; }
+    .sidebar-label { font-family: var(--sans); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); margin-bottom: 1rem; }
+    .sidebar-stat { margin-bottom: 1.2rem; }
+    .sidebar-stat-number { font-family: var(--serif); font-size: 2rem; font-weight: 800; color: var(--ink); line-height: 1; margin-bottom: 0.2rem; }
+    .sidebar-stat-label { font-family: var(--sans); font-size: 0.72rem; font-weight: 300; color: var(--ink-light); line-height: 1.4; }
+    .related-article { margin-bottom: 1.2rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--rule); }
+    .related-article:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .related-kicker { font-family: var(--sans); font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.3rem; }
+    .related-headline { font-family: var(--serif); font-size: 0.95rem; font-weight: 600; line-height: 1.3; color: var(--ink); cursor: pointer; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tag { font-family: var(--sans); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-light); border: 1px solid var(--rule); padding: 0.3rem 0.7rem; border-radius: 20px; cursor: pointer; transition: all 0.2s; }
+    .tag:hover { border-color: var(--amber); color: var(--amber); }
+    footer { background: var(--ink); color: var(--cream); padding: 2.5rem 2rem 1.5rem; margin-top: 4rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 1rem; }
+    .footer-logo { font-family: var(--serif); font-size: 1.5rem; font-weight: 800; color: var(--cream); text-decoration: none; }
+    .footer-logo span { color: var(--amber); }
+    .footer-copy { max-width: 1100px; margin: 0 auto; font-family: var(--sans); font-size: 0.7rem; font-weight: 300; color: rgba(250,247,242,0.35); }
+    @media (max-width: 960px) { .article-wrapper { grid-template-columns: 1fr; } .article-sidebar { position: static; } .rate-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .article-headline { font-size: 2rem; } .rate-grid { grid-template-columns: 1fr; } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .article-body { animation: fadeUp 0.6s ease both; }
+  </style>
+</head>
+<body>
+  <div class="masthead">Global macroeconomic analysis &amp; commentary &nbsp;·&nbsp; Basis Point</div>
+  <header>
+    <div class="header-inner">
+      <div class="header-top">
+        <a href="index.html" class="logo">Basis Point<span>.</span></a>
+        <div style="font-family:var(--sans);font-size:0.72rem;color:var(--ink-light);">Monday, 26 January 2026</div>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="#" class="active">Macro</a>
+        <a href="#">Europe</a>
+        <a href="#">Tech &amp; Innovation</a>
+        <a href="#">Emerging Markets</a>
+        <a href="#">Data</a>
+        <a href="#">Opinion</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="article-wrapper">
+    <article class="article-body">
+      <div class="article-kicker">Monetary Policy · Global Macro</div>
+      <h1 class="article-headline">The Quiet Unravelling of the Global Rate Cycle</h1>
+      <p class="article-standfirst">After two years of synchronised monetary tightening, the world's major central banks are now moving at strikingly different speeds. The resulting divergence is reshaping currency markets, capital flows, and the prospects for a soft landing.</p>
+      <div class="article-meta">
+        <span class="author">By The Editors</span>
+        <span class="dot">·</span>
+        <span>26 January 2026</span>
+        <span class="dot">·</span>
+        <span>10 min read</span>
+        <span class="dot">·</span>
+        <span style="color:var(--amber)">Monetary Policy</span>
+      </div>
+
+      <div class="article-hero-visual">
+        <div class="visual-label">Policy Rates — Selected Central Banks, January 2026</div>
+        <div class="rate-grid">
+          <div class="rate-card" style="border-color:#c8832a">
+            <div class="rate-card-label">Federal Reserve (US)</div>
+            <div class="rate-card-value">4.25%</div>
+            <div class="rate-card-change">Peak: 5.50% · Cut by 125bp since Sept 2024</div>
+          </div>
+          <div class="rate-card" style="border-color:#4a9abf">
+            <div class="rate-card-label">European Central Bank</div>
+            <div class="rate-card-value">2.50%</div>
+            <div class="rate-card-change">Peak: 4.00% · Cut by 150bp since June 2024</div>
+          </div>
+          <div class="rate-card" style="border-color:#4abf8a">
+            <div class="rate-card-label">Bank of England</div>
+            <div class="rate-card-value">4.50%</div>
+            <div class="rate-card-change">Peak: 5.25% · Cut by 75bp since Aug 2024</div>
+          </div>
+          <div class="rate-card" style="border-color:#bf9a4a">
+            <div class="rate-card-label">Bank of Japan</div>
+            <div class="rate-card-value">0.50%</div>
+            <div class="rate-card-change">Hiking since 2024 · Moving in opposite direction</div>
+          </div>
+        </div>
+        <div class="chart-caption">Source: Federal Reserve, ECB, Bank of England, Bank of Japan. Rates as of January 2026.</div>
+      </div>
+
+      <div class="findings-box">
+        <div class="findings-title">Key Findings</div>
+        <ul class="findings-list">
+          <li>The synchronised tightening cycle of 2022–23 has given way to a highly divergent easing cycle, with the ECB cutting far more aggressively than the Fed or the Bank of England.</li>
+          <li>The Bank of Japan is the outlier in the other direction — finally exiting negative interest rates after decades of ultra-loose policy, just as others are cutting.</li>
+          <li>Dollar strength has been a persistent consequence of the divergence, creating capital flow pressures for emerging market economies with dollar-denominated debt.</li>
+          <li>The path to a soft landing in the United States is narrowing: inflation has not fully returned to target, yet the labour market is softening faster than the Fed anticipated.</li>
+        </ul>
+      </div>
+
+      <div class="prose">
+        <p>In 2022, the world's central banks moved together with unusual coordination. Faced with the sharpest inflation surge in forty years — driven by pandemic-era supply disruptions, energy price shocks, and fiscal stimulus that had overshot its mark — the Federal Reserve, the European Central Bank, the Bank of England, and most of their peers all raised interest rates aggressively and more or less simultaneously. The IMF called it the most synchronised global tightening cycle in recent history.</p>
+
+        <p>That synchronisation has now broken down completely. What has replaced it is something more complex, more differentiated, and in several respects more dangerous: a world of central banks moving at very different speeds in very different directions, each responding to its own domestic economic conditions, but in doing so creating global spillovers that none of them can fully control.</p>
+
+        <h2>The Fed's Delicate Position</h2>
+
+        <p>The Federal Reserve entered 2025 having raised rates to 5.50% — the highest level since 2001 — and then begun cutting cautiously from September 2024 onwards. By January 2026, the federal funds rate stood at 4.25%: meaningfully lower than the peak, but still restrictive by historical standards. The pace of cuts has been slower than markets initially anticipated, for a straightforward reason: US inflation proved stickier than the Fed projected.</p>
+
+        <table class="data-table">
+          <thead>
+            <tr><th>Central Bank</th><th>Peak Rate</th><th>Current Rate</th><th>Cumulative Cuts</th><th>Inflation (Latest)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Federal Reserve</strong></td><td class="num">5.50%</td><td class="num">4.25%</td><td class="num">−125bp</td><td class="num">2.7%</td></tr>
+            <tr><td>European Central Bank</td><td class="num">4.00%</td><td class="num">2.50%</td><td class="num">−150bp</td><td class="num">2.2%</td></tr>
+            <tr><td>Bank of England</td><td class="num">5.25%</td><td class="num">4.50%</td><td class="num">−75bp</td><td class="num">2.8%</td></tr>
+            <tr><td>Bank of Canada</td><td class="num">5.00%</td><td class="num">3.00%</td><td class="num">−200bp</td><td class="num">1.9%</td></tr>
+            <tr><td>Bank of Japan</td><td class="num">−0.10%</td><td class="num">+0.50%</td><td class="up">+60bp</td><td class="num">2.9%</td></tr>
+            <tr><td class="note" colspan="5">Source: Central bank policy statements. Rates as of January 2026. Inflation figures are latest available CPI readings.</td></tr>
+          </tbody>
+        </table>
+
+        <p>Core personal consumption expenditure — the Fed's preferred inflation measure — remained at 2.7% at the start of 2026, above the 2% target but well below the 5.6% peak of 2022. The so-called "last mile" of disinflation has proved stubborn, particularly in services, where wage growth and shelter costs continue to keep prices elevated. Against that backdrop, the Fed's measured approach to easing is defensible — but it leaves the US economy in a somewhat unusual position: still operating with restrictive monetary conditions even as growth shows signs of slowing.</p>
+
+        <div class="pull-quote">"The Fed is threading a needle in the dark. Too slow, and a weakening labour market tips into recession. Too fast, and inflation re-accelerates before the job is done."</div>
+
+        <h2>Europe's Different Problem</h2>
+
+        <p>The ECB's more aggressive easing reflects a fundamentally different economic situation. The eurozone economy, dragged down by German stagnation, weak consumer confidence, and the lingering effects of the energy crisis, has grown at well below its potential for three years running. Inflation in the eurozone fell back to around 2.2% — closer to target — faster than in the United States, giving the ECB more room to cut. The result is a 150 basis point reduction since June 2024, taking the deposit rate from 4.00% to 2.50%.</p>
+
+        <p>The Bank of England sits in an awkward middle ground: facing higher inflation than the eurozone but weaker growth than the United States. UK services inflation has been particularly persistent, linked to a tight labour market and robust wage growth. The Bank has moved more cautiously than the ECB but more decisively than many expected at the start of 2025, cutting by 75 basis points to bring the base rate to 4.50%.</p>
+
+        <h2>The Japan Exception</h2>
+
+        <p>Perhaps the most significant development in global monetary policy is happening in Tokyo. The Bank of Japan, after decades of zero and negative interest rate policy — arguably the longest experiment in ultra-loose monetary conditions in modern central banking history — has finally begun raising rates. The shift to positive rates in early 2024, followed by further hikes taking the policy rate to 0.50% by early 2026, represents a genuine regime change.</p>
+
+        <p>Japan's move matters globally for several reasons. Japanese institutional investors, incentivised for years by near-zero domestic rates to invest overseas in search of returns, have begun to repatriate capital as domestic yields become more attractive. This "carry trade unwind" has contributed to yen appreciation and periodic volatility in global bond markets. The scale of Japanese overseas investment — accumulated over decades — means that even a partial repatriation of those flows represents a significant shift in global capital markets.</p>
+
+        <h2>Emerging Markets: Caught in the Crossfire</h2>
+
+        <p>Central bank divergence among developed economies creates particular pressures for emerging markets. Dollar strength — a persistent consequence of the Fed keeping rates higher than peers — raises the cost of dollar-denominated debt service for countries that borrowed in dollars during the low-rate era. It can also trigger capital outflows as investors move funds from higher-risk emerging markets to the relatively safe US dollar assets yielding 4%+.</p>
+
+        <p>Several emerging market central banks have been forced to maintain higher-than-desired domestic rates simply to defend their currencies and prevent capital flight — even when their domestic economies would benefit from easing. This dynamic is most acute in economies with large external financing needs: countries running current account deficits that depend on continued capital inflows to fund their external positions.</p>
+
+        <div class="method-box">
+          <div class="method-box-title">A Note on Data &amp; Methodology</div>
+          <p>Policy rate data is sourced directly from central bank policy statements (Federal Reserve FOMC statements, ECB monetary policy decisions, Bank of England MPC minutes, Bank of Japan). Inflation figures refer to the latest available headline CPI readings at time of publication. All rate figures are as of January 2026 and are subject to change following subsequent policy meetings.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid var(--rule);">
+        <div style="font-family:var(--sans);font-size:0.65rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-light);margin-bottom:0.7rem;">Topics</div>
+        <div class="tags">
+          <span class="tag">Monetary Policy</span><span class="tag">Federal Reserve</span><span class="tag">ECB</span><span class="tag">Bank of England</span><span class="tag">Interest Rates</span><span class="tag">Inflation</span><span class="tag">Currency Markets</span>
+        </div>
+      </div>
+    </article>
+
+    <aside class="article-sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-label">Key Statistics</div>
+        <div class="sidebar-stat"><div class="sidebar-stat-number">4.25%</div><div class="sidebar-stat-label">Federal funds rate, January 2026 — still restrictive</div></div>
+        <div class="sidebar-stat"><div class="sidebar-stat-number">−200bp</div><div class="sidebar-stat-label">Bank of Canada's cumulative cuts — most aggressive among G7</div></div>
+        <div class="sidebar-stat"><div class="sidebar-stat-number">0.50%</div><div class="sidebar-stat-label">Bank of Japan policy rate — highest since 2008</div></div>
+        <div class="sidebar-stat"><div class="sidebar-stat-number">2.7%</div><div class="sidebar-stat-label">US Core PCE inflation — still above the 2% target</div></div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-label">Related Reading</div>
+        <div class="related-article"><div class="related-kicker">Fiscal Policy</div><div class="related-headline">The G7's Deficit Problem Isn't Going Away</div></div>
+        <div class="related-article"><div class="related-kicker">Europe</div><div class="related-headline">Germany's Growth Problem Is Structural, Not Cyclical</div></div>
+        <div class="related-article"><div class="related-kicker">Emerging Markets</div><div class="related-headline">Africa's Debt Reckoning: What Comes After the IMF</div></div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-label">Data Sources</div>
+        <div style="font-family:var(--sans);font-size:0.78rem;font-weight:300;color:var(--ink-light);line-height:1.7;">
+          <p>· Federal Reserve (FOMC statements)</p>
+          <p>· European Central Bank</p>
+          <p>· Bank of England MPC minutes</p>
+          <p>· Bank of Japan</p>
+          <p>· BIS (Bank for International Settlements)</p>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <a href="index.html" class="footer-logo">Basis Point<span>.</span></a>
+      <div style="font-family:var(--sans);font-size:0.75rem;font-weight:300;color:rgba(250,247,242,0.5);">Independent analysis of global macroeconomic trends</div>
+    </div>
+    <div class="footer-copy">© 2026 Basis Point. All rights reserved. Analysis is for informational purposes only and does not constitute investment advice.</div>
+  </footer>
+</body>
+</html>
